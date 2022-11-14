@@ -4,10 +4,13 @@
  */
 package Services;
 
+import ViewModels.KhachHang;
+import java.util.ArrayList;
+
 /**
  *
  * @author Acer
  */
 public interface KhachHangService {
-    
+    ArrayList<KhachHang> getAll();
 }
