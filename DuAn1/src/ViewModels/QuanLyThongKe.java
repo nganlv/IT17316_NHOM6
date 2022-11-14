@@ -14,12 +14,12 @@ import java.math.BigDecimal;
 public class QuanLyThongKe {
     private String MaSP, TenSP, ngay;
     private int SoLuong;
-    private BigDecimal Dongia, ThanhTien;
+    private Double Dongia, ThanhTien;
 
     public QuanLyThongKe() {
     }
     
-    public QuanLyThongKe(String MaSP, String TenSP, String ngay, int SoLuong, BigDecimal Dongia, BigDecimal ThanhTien) {
+    public QuanLyThongKe(String MaSP, String TenSP, String ngay, int SoLuong, Double Dongia, Double ThanhTien) {
         this.MaSP = MaSP;
         this.TenSP = TenSP;
         this.ngay = ngay;
@@ -60,19 +60,19 @@ public class QuanLyThongKe {
         this.SoLuong = SoLuong;
     }
 
-    public BigDecimal getDongia() {
+    public Double getDongia() {
         return Dongia;
     }
 
-    public void setDongia(BigDecimal Dongia) {
+    public void setDongia(Double Dongia) {
         this.Dongia = Dongia;
     }
 
-    public BigDecimal getThanhTien() {
-        return ThanhTien;
+    public Double getThanhTien() {
+        return SoLuong * Dongia;
     }
 
-    public void setThanhTien(BigDecimal ThanhTien) {
+    public void setThanhTien(Double ThanhTien) {
         this.ThanhTien = ThanhTien;
     }
     
