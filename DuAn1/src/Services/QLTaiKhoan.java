@@ -5,17 +5,19 @@
 package Services;
 
 import DomainModels.ChucVu;
+import DomainModels.TaiKhoan;
 import ViewModels.QuanLyChucVu;
+import ViewModels.QuanLyTaiKhoan;
 import java.util.List;
 
 /**
  *
  * @author nguye
  */
-public interface QlChucVu {
-    List<QuanLyChucVu> getView();
-      Boolean checkMa(String maChucVu);
-       String addCVs(ChucVu cv);
-         String updateCV(ChucVu cv);
-    String deleteCV(String maChucVu);
+public interface QLTaiKhoan {
+     List<QuanLyTaiKhoan> getView();
+      Boolean checkMa(String maTk);
+         String addCVs(TaiKhoan tk);
+         String updateCV(TaiKhoan tk);
+    String deleteCV(String  tk);
 }

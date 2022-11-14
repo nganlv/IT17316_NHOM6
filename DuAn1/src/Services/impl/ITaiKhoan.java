@@ -5,9 +5,12 @@
 package Services.impl;
 
 import DomainModels.ChucVu;
+import DomainModels.TaiKhoan;
 import Repository.ChucVuRepo;
-import Services.QlChucVu;
-import ViewModels.QuanLyChucVu;
+import Repository.TaiKhoanRepo;
+import Services.QLTaiKhoan;
+import ViewModels.QuanLyTaiKhoan;
+import ViewModels.QuanLyTaiKhoan;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -17,17 +20,17 @@ import java.util.logging.Logger;
  *
  * @author nguye
  */
-public class IChucVu implements QlChucVu{
-private ChucVuRepo cvRepo=new ChucVuRepo();
+public class ITaiKhoan implements  QLTaiKhoan{
+    private TaiKhoanRepo TKRepo=new TaiKhoanRepo();
     @Override
-    public List<QuanLyChucVu> getView() {
-        return cvRepo.getAll();
+    public List<QuanLyTaiKhoan> getView() {
+        return TKRepo.getAll();
     }
     
     @Override
     public Boolean checkMa(String maChucVu) {
-        List<QuanLyChucVu> listCV = cvRepo.getAll();
-        for (QuanLyChucVu cv : listCV) {
+        List<QuanLyTaiKhoan> listCV = TKRepo.getAll();
+        for (QuanLyTaiKhoan cv : listCV) {
             if(cv.getMa().equalsIgnoreCase(maChucVu)){
                 return true;
             }
@@ -35,20 +38,20 @@ private ChucVuRepo cvRepo=new ChucVuRepo();
         return false;
     }
      @Override
-    public String addCVs(ChucVu cv) {
+    public String addCVs(TaiKhoan tk) {
           try {
-              if(cvRepo.addCV(cv) < 1){
+              if(TKRepo.addTT(tk) < 1){
                   return "Thêm thất bại";
               }else{
                   return "Thêm thành công";
               } } catch (SQLException ex) {
-              Logger.getLogger(QuanLyChucVu.class.getName()).log(Level.SEVERE, null, ex);
+              Logger.getLogger(QuanLyTaiKhoan.class.getName()).log(Level.SEVERE, null, ex);
           }
           return null;
     }
      @Override
-    public String updateCV(ChucVu cv) {
-        if(cvRepo.updateCV(cv) < 1){
+    public String updateCV(TaiKhoan tk) {
+        if(TKRepo.updateCV(tk) < 1){
             return "Sửa thất bại";
         }else{
             return "Sửa thành công";
@@ -56,8 +59,8 @@ private ChucVuRepo cvRepo=new ChucVuRepo();
     }
 
     @Override
-    public String deleteCV(String maChucVu) {
-        if(cvRepo.deleteCV(maChucVu) < 1){
+    public String deleteCV(String tk) {
+        if(TKRepo.deleteCV(tk) < 1){
             return "Xóa thất bại";
         }else{
             return "Xóa thành công";
