@@ -297,8 +297,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDiemActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="com.github.lgooddatepicker.components.DatePicker" name="txtNgaySinh">
-                </Component>
                 <Component class="javax.swing.JRadioButton" name="rdoNam">
                   <Properties>
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
@@ -314,10 +312,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="N&#x1eef;"/>
                   </Properties>
-                </Component>
-                <Component class="com.github.lgooddatepicker.components.DatePicker" name="txtNgayTao">
-                </Component>
-                <Component class="com.github.lgooddatepicker.components.DatePicker" name="txtNgayHetHan">
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
@@ -348,6 +342,12 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                   </Properties>
+                </Component>
+                <Component class="com.github.lgooddatepicker.components.DatePicker" name="txtNgaySinh">
+                </Component>
+                <Component class="com.github.lgooddatepicker.components.DatePicker" name="txtNgayTao">
+                </Component>
+                <Component class="com.github.lgooddatepicker.components.DatePicker" name="txtNgayHetHan">
                 </Component>
               </SubComponents>
             </Container>
