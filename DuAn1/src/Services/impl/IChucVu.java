@@ -18,11 +18,11 @@ import java.util.logging.Logger;
  * @author nguye
  */
 public class IChucVu implements QlChucVu{
-private ChucVuRepo cvRepo=new ChucVuRepo();
-    @Override
-    public List<QuanLyChucVu> getView() {
-        return cvRepo.getAll();
-    }
+//private ChucVuRepo cvRepo=new ChucVuRepo();
+//    @Override
+//    public List<QuanLyChucVu> getView() {
+//        return cvRepo.getAll();
+//    }
     
     @Override
     public List<ChucVu> getAlls() {
