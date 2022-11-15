@@ -19,56 +19,56 @@ import java.util.logging.Logger;
  */
 public class IChucVu implements QlChucVu{
 private ChucVuRepo cvRepo=new ChucVuRepo();
-//    @Override
-//    public List<QuanLyChucVu> getView() {
-//        return cvRepo.getAll();
-//    }
+    @Override
+    public List<QuanLyChucVu> getView() {
+        return cvRepo.getAll();
+    }
     
     @Override
     public List<ChucVu> getAlls() {
         return cvRepo.getView();
     }
-//    @Override
-//    public Boolean checkMa(String maChucVu) {
-//        List<QuanLyChucVu> listCV = cvRepo.getAll();
-//        for (QuanLyChucVu cv : listCV) {
-//            if(cv.getMa().equalsIgnoreCase(maChucVu)){
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//     @Override
-//    public String addCVs(ChucVu cv) {
-//          try {
-//              if(cvRepo.addCV(cv) < 1){
-//                  return "Thêm thất bại";
-//              }else{
-//                  return "Thêm thành công";
-//              } } catch (SQLException ex) {
-//              Logger.getLogger(QuanLyChucVu.class.getName()).log(Level.SEVERE, null, ex);
-//          }
-//          return null;
-//    }
-//     @Override
-//    public String updateCV(ChucVu cv) {
-//        if(cvRepo.updateCV(cv) < 1){
-//            return "Sửa thất bại";
-//        }else{
-//            return "Sửa thành công";
-//        }
-//    }
-//
-//    @Override
-//    public String deleteCV(String maChucVu) {
-//        if(cvRepo.deleteCV(maChucVu) < 1){
-//            return "Xóa thất bại";
-//        }else{
-//            return "Xóa thành công";
-//        }
-//    }
-//     @Override
-//    public ChucVu getOne(String maChucVu) {
-//        return cvRepo.getOne(maChucVu);
-//    }
+    @Override
+    public Boolean checkMa(String maChucVu) {
+        List<QuanLyChucVu> listCV = cvRepo.getAll();
+        for (QuanLyChucVu cv : listCV) {
+            if(cv.getMa().equalsIgnoreCase(maChucVu)){
+                return true;
+            }
+        }
+        return false;
+    }
+     @Override
+    public String addCVs(ChucVu cv) {
+          try {
+              if(cvRepo.addCV(cv) < 1){
+                  return "Thêm thất bại";
+              }else{
+                  return "Thêm thành công";
+              } } catch (SQLException ex) {
+              Logger.getLogger(QuanLyChucVu.class.getName()).log(Level.SEVERE, null, ex);
+          }
+          return null;
+    }
+     @Override
+    public String updateCV(ChucVu cv) {
+        if(cvRepo.updateCV(cv) < 1){
+            return "Sửa thất bại";
+        }else{
+            return "Sửa thành công";
+        }
+    }
+
+    @Override
+    public String deleteCV(String maChucVu) {
+        if(cvRepo.deleteCV(maChucVu) < 1){
+            return "Xóa thất bại";
+        }else{
+            return "Xóa thành công";
+        }
+    }
+     @Override
+    public ChucVu getOne(String maChucVu) {
+        return cvRepo.getOne(maChucVu);
+    }
 }

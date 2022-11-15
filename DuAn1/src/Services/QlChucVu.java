@@ -13,11 +13,11 @@ import java.util.List;
  * @author nguye
  */
 public interface QlChucVu {
-//    List<QuanLyChucVu> getView();
+    List<QuanLyChucVu> getView();
      List<ChucVu> getAlls();
-//       ChucVu getOne(String maChucVu);
-//      Boolean checkMa(String maChucVu);
-//       String addCVs(ChucVu cv);
-//         String updateCV(ChucVu cv);
-//    String deleteCV(String maChucVu);
+       ChucVu getOne(String maChucVu);
+      Boolean checkMa(String maChucVu);
+       String addCVs(ChucVu cv);
+         String updateCV(ChucVu cv);
+    String deleteCV(String maChucVu);
 }
