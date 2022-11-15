@@ -34,6 +34,41 @@ public class ChucVuRepo {
     
     return null;
     }
+     
+    public List<ChucVu> getView() {
+        List<ChucVu> listCV = new ArrayList<>();
+        String sql = """
+                     SELECT Id, Ma, Ten
+                     FROM     ChucVu""";
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                listCV.add(new ChucVu(rs.getString("Id") ,rs.getString("Ma"), rs.getString("Ten")));
+            }
+            return listCV;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+       public ChucVu getOne(String maCV) {
+        String sql = """
+                     SELECT Id, Ma, Ten
+                     FROM     ChucVu """;
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, maCV);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                ChucVu cv = new ChucVu(rs.getString(1), rs.getString(2), rs.getString(3));
+                return cv;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
      public Integer addCV(ChucVu cv) throws SQLException{
       String sql="insert into ChucVu(Ma,Ten) values(?,?)";
       try(Connection conn=DBContext.getConnection();

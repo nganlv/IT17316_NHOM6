@@ -25,6 +25,10 @@ private ChucVuRepo cvRepo=new ChucVuRepo();
     }
     
     @Override
+    public List<ChucVu> getAlls() {
+        return cvRepo.getView();
+    }
+    @Override
     public Boolean checkMa(String maChucVu) {
         List<QuanLyChucVu> listCV = cvRepo.getAll();
         for (QuanLyChucVu cv : listCV) {
@@ -62,5 +66,9 @@ private ChucVuRepo cvRepo=new ChucVuRepo();
         }else{
             return "Xóa thành công";
         }
+    }
+     @Override
+    public ChucVu getOne(String maChucVu) {
+        return cvRepo.getOne(maChucVu);
     }
 }

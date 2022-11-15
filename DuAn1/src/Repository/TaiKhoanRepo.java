@@ -36,6 +36,21 @@ public class TaiKhoanRepo {
 
         return null;
     }
+ public List<TaiKhoan> getView() {
+        List<TaiKhoan> listCV = new ArrayList();
+        String sql = "select Id,Ma,Ten,MatKhau from TaiKhoan";
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                listCV.add(new TaiKhoan(rs.getString("Id"), rs.getString("Ma"), rs.getString("Ten"), rs.getString("MatKhau")));
+            }
+            return listCV;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     public Integer addTT(TaiKhoan tk) throws SQLException {
       String sql = """

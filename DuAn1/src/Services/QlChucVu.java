@@ -14,6 +14,8 @@ import java.util.List;
  */
 public interface QlChucVu {
     List<QuanLyChucVu> getView();
+     List<ChucVu> getAlls();
+       ChucVu getOne(String maChucVu);
       Boolean checkMa(String maChucVu);
        String addCVs(ChucVu cv);
          String updateCV(ChucVu cv);
