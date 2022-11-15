@@ -4,6 +4,8 @@
  */
 package Views;
 
+
+
 /**
  *
  * @author levan
@@ -16,6 +18,8 @@ public class BanHangJpanel extends javax.swing.JPanel {
     public BanHangJpanel() {
         initComponents();
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
