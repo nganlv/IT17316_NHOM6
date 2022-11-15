@@ -19,10 +19,10 @@ import java.util.logging.Logger;
  */
 public class IChucVu implements QlChucVu{
 private ChucVuRepo cvRepo=new ChucVuRepo();
-    @Override
-    public List<QuanLyChucVu> getView() {
-        return cvRepo.getAll();
-    }
+//    @Override
+//    public List<QuanLyChucVu> getView() {
+//        return cvRepo.getAll();
+//    }
     
     @Override
     public List<ChucVu> getAlls() {
