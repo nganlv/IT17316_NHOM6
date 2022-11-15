@@ -4,19 +4,38 @@
  */
 package Views;
 
+import Services.ISanPhamService;
+import Services.SanPhamService;
+import ViewModels.QuanLySanPham;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author levan
  */
 public class BanHangJpanel extends javax.swing.JPanel {
-
+private final ISanPhamService iSanPhamService=new SanPhamService();
     /**
      * Creates new form BanHang
      */
     public BanHangJpanel() {
         initComponents();
+        loadTable();
     }
-
+private void loadTable(){
+    DefaultTableModel model=new DefaultTableModel();
+    model.setColumnIdentifiers(new String[]{"Mã","Tên","Thương hiệu","Xuất xứ","Giới tính","Màu sắc","Kích thước","Chất liệu","Năm bảo hành","Đơn giá","Số lượng tồn"});
+    List<QuanLySanPham> listSp=iSanPhamService.getAllSps();
+    if(listSp==null){
+        JOptionPane.showMessageDialog(this, "Rỗng");
+    }
+    for(QuanLySanPham sp:listSp){
+        model.addRow(new Object[]{sp.getMa(), sp.getTen(), sp.getThuongHieu(), sp.getXuatXu(), sp.getGioiTinh(), sp.getMauSac(), sp.getKichThuoc(), sp.getChatLieu(), sp.getNamBh(), sp.getDonGia(), sp.getSoLuong()});
+    }
+    tblSanPham.setModel(model);
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +57,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tblSanPham = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -145,7 +164,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -156,7 +175,7 @@ public class BanHangJpanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tblSanPham);
 
         jLabel5.setText("Tìm kiếm sản phẩm");
 
@@ -411,7 +430,6 @@ public class BanHangJpanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -421,5 +439,6 @@ public class BanHangJpanel extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tblSanPham;
     // End of variables declaration//GEN-END:variables
 }
