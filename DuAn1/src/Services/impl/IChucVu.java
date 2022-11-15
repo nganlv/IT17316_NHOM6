@@ -67,8 +67,8 @@ private ChucVuRepo cvRepo=new ChucVuRepo();
             return "Xóa thành công";
         }
     }
-//     @Override
-//    public ChucVu getOne(String maChucVu) {
-//        return cvRepo.getOne(maChucVu);
-//    }
+     @Override
+    public ChucVu getOne(String maChucVu) {
+        return cvRepo.getOne(maChucVu);
+    }
 }
