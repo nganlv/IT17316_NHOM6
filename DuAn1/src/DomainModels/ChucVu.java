@@ -46,7 +46,7 @@ public class ChucVu {
         this.ten = ten;
     }
 
-    public String toString() {
-        return ten;
-    }
+//    public String toString() {
+//        return ten;
+//    }
 }
