@@ -4,11 +4,17 @@
  */
 package Views;
 
+import Services.impl.KhachHangImpl;
+import ViewModels.KhachHang;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author levan
  */
 public class KhachHangJpanel extends javax.swing.JPanel {
+private final KhachHangImpl kHSer = new KhachHangImpl();
 
     /**
      * Creates new form KhachHangJpanel
@@ -16,7 +22,27 @@ public class KhachHangJpanel extends javax.swing.JPanel {
     public KhachHangJpanel() {
         initComponents();
     }
-
+    public void loadtable(){
+        ArrayList<KhachHang> list = kHSer.getAll();
+        DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        model.setColumnCount(0);
+        model.setRowCount(0);
+        model.setColumnIdentifiers(new Object[]{"Mã","Họ và tên","Giới tính","Ngày sinh","SĐT","Email","Ngày tạo","Ngày hết hạn","Điểm","Địa Chỉ"});
+        for (KhachHang k : list) {
+            model.addRow(new Object[]{
+                k.getMaKH(),
+                k.getHoTen(),
+                k.getGioiTinh(),
+                k.getSdt(),
+                k.getEmail(),
+                k.getNgayTao(),
+                k.getNgayHetHan(),
+                k.getDiem(),
+                k.getDiaChi()
+            });
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
