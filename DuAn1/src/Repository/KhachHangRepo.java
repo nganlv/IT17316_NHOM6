@@ -44,27 +44,40 @@ public class KhachHangRepo {
     }
 
     public Integer insert(KhachHang kh) throws Exception {
-        String sql = "SELECT Ma, HoTen, GioiTinh, NgaySinh, Sdt, DiaChi, Email, NgayTao, NgayHetHan, Diem FROM KhachHangINSERT INTO KhachHang"
+        String sql = " INSERT INTO KhachHang"
                 + "         (Ma, HoTen, GioiTinh, Sdt, DiaChi, Email, Diem, NgaySinh, NgayTao, NgayHetHan)"
                 + "VALUES (?,?,?,?,?,?,?,?,?,?)";
         try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, kh.getMaKH());
             ps.setString(2, kh.getHoTen());
             ps.setString(3, kh.getGioiTinh());
-            ps.setDate(4, (Date) kh.getNgaysinh());
-            ps.setString(5, kh.getSdt());
-            ps.setString(6, kh.getDiaChi());
-            ps.setString(7, kh.getEmail());
-            ps.setDate(8, (Date) kh.getNgayTao());
-            ps.setDate(9, (Date) kh.getNgayHetHan());
-            ps.setString(10, kh.getDiem());
+            ps.setString(4, kh.getSdt());
+            ps.setString(5, kh.getDiaChi());
+            ps.setString(6, kh.getEmail());
+            ps.setString(7, kh.getDiem());
+            ps.setDate(8, (Date) kh.getNgaysinh());
+            ps.setDate(9, (Date) kh.getNgayTao());
+            ps.setDate(10, (Date) kh.getNgayHetHan());
 
             return ps.executeUpdate();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    public Integer deleteK(String maKH) {
+        String sql = "DELETE FROM KhachHang where Ma = ?";
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, maKH);
+
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+
     }
 
 }

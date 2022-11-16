@@ -12,6 +12,12 @@ import java.util.ArrayList;
  * @author Acer
  */
 public interface KhachHangSer {
+
     ArrayList<KhachHang> getView();
-    String Insert(KhachHang kh);
+
+    Boolean checkMa(String maTk);
+
+    String add(KhachHang kH);
+
+    String delete(String KH);
 }
