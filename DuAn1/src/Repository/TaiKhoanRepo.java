@@ -4,6 +4,7 @@
  */
 package Repository;
 
+import DomainModels.ChucVu;
 import DomainModels.TaiKhoan;
 import Utilities.DBContext;
 import ViewModels.QuanLyChucVu;
@@ -51,7 +52,24 @@ public class TaiKhoanRepo {
 
         return null;
     }
+public TaiKhoan getOne(String maTK) {
+        String sql = """
+                     SELECT Id, Ma, Ten,MatKhau
+                     FROM     TaiKhoan """;
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, maTK);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                TaiKhoan cv = new TaiKhoan(rs.getString(1), rs.getString(2), rs.getString(3),rs.getString("4"));
+                return cv;
+            }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
     public Integer addTT(TaiKhoan tk) throws SQLException {
       String sql = """
                      INSERT INTO [dbo].[TaiKhoan]

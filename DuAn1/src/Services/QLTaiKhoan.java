@@ -16,6 +16,8 @@ import java.util.List;
  */
 public interface QLTaiKhoan {
      List<QuanLyTaiKhoan> getView();
+     List<TaiKhoan> getAlls();
+         TaiKhoan getOne(String maTK);
       Boolean checkMa(String maTk);
          String addCVs(TaiKhoan tk);
          String updateCV(TaiKhoan tk);
