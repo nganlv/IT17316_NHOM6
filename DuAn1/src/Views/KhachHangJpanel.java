@@ -25,6 +25,10 @@ public class KhachHangJpanel extends javax.swing.JPanel {
     public KhachHangJpanel() {
         initComponents();
 
+
+        loadTable();
+
+        
     }
 
     public void loadTable() {
