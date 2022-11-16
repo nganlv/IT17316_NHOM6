@@ -4,17 +4,56 @@
  */
 package Views;
 
+
+import Services.impl.KhachHangImpl;
+import ViewModels.KhachHang;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author levan
  */
 public class KhachHangJpanel extends javax.swing.JPanel {
-
+private final KhachHangImpl KHser = new KhachHangImpl();
     /**
      * Creates new form KhachHangJpanel
      */
     public KhachHangJpanel() {
         initComponents();
+        
+    }
+    
+    public void loadTable(){
+        ArrayList<KhachHang> listKh = KHser.getView();
+        DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        model.setColumnCount(0);
+        model.addColumn("Mã");
+        model.addColumn("Họ và tên");
+        model.addColumn("Giới Tính");
+        model.addColumn("Ngày sinh");
+        model.addColumn("SĐT");
+        model.addColumn("Email");
+        model.addColumn("Ngày tạo");
+        model.addColumn("Ngày hết hạn");
+        model.addColumn("Điểm");
+        model.addColumn("Địa Chỉ");
+        model.setRowCount(0);
+        
+        for (KhachHang k : listKh) {
+            model.addRow(new Object[]{
+                k.getMaKH(),
+                k.getHoTen(),
+                k.getGioiTinh(),
+                k.getNgaysinh(),
+                k.getSdt(),
+                k.getEmail(),
+                k.getNgayTao(),
+                k.getNgayHetHan(),
+                k.getDiem(),
+                k.getDiaChi()
+            });
+        }
     }
 
     /**
@@ -45,16 +84,16 @@ public class KhachHangJpanel extends javax.swing.JPanel {
         txtSDT = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtDiem = new javax.swing.JTextField();
-        txtNgaySinh = new com.github.lgooddatepicker.components.DatePicker();
         rdoNam = new javax.swing.JRadioButton();
         rdoNu = new javax.swing.JRadioButton();
-        txtNgayTao = new com.github.lgooddatepicker.components.DatePicker();
-        txtNgayHetHan = new com.github.lgooddatepicker.components.DatePicker();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDiaChi = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        txtngaysinh = new com.github.lgooddatepicker.components.DatePicker();
+        txtNgayTao = new com.github.lgooddatepicker.components.DatePicker();
+        txtNgayHetHan = new com.github.lgooddatepicker.components.DatePicker();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
@@ -145,7 +184,7 @@ public class KhachHangJpanel extends javax.swing.JPanel {
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(txtngaysinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(jPanel3Layout.createSequentialGroup()
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -204,7 +243,7 @@ public class KhachHangJpanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel8)
-                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtngaysinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNgayHetHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -231,18 +270,18 @@ public class KhachHangJpanel extends javax.swing.JPanel {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("Tìm kiếm :");
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "Lọc", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Điểm ");
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         cboGioitinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("Giới tính");
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         cboDiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -421,9 +460,9 @@ public class KhachHangJpanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtHoTen;
     private javax.swing.JTextField txtMA;
     private com.github.lgooddatepicker.components.DatePicker txtNgayHetHan;
-    private com.github.lgooddatepicker.components.DatePicker txtNgaySinh;
     private com.github.lgooddatepicker.components.DatePicker txtNgayTao;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTimKiem;
+    private com.github.lgooddatepicker.components.DatePicker txtngaysinh;
     // End of variables declaration//GEN-END:variables
 }
