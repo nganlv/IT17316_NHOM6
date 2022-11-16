@@ -21,6 +21,9 @@ private final KhachHangImpl KHser = new KhachHangImpl();
      */
     public KhachHangJpanel() {
         initComponents();
+
+        loadTable();
+
         
     }
     
