@@ -18,7 +18,7 @@ public class DBContext {
     private static final String PASSWORD = "12345";
     private static final String SERVER_NAME = "NGUYENDUCAN\\SQLEXPRESS";
     private static final String PORT = "1433";
-    private static final String DATABASE_NAME = "DuAn1_Nhom6";
+    private static final String DATABASE_NAME = "DuAn1_Nhom6_update";
     private static final boolean USING_SSL = true;
     
     private static String CONNECT_STRING;
