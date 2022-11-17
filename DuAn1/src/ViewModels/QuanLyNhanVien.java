@@ -20,14 +20,15 @@ public class QuanLyNhanVien {
    private String sdt;
    private String diachi;
    private String email;
-   private String chucvu;
+
    private String taikhoan;
+      private String chucvu;
    private int trangthai;
 
     public QuanLyNhanVien() {
     }
 
-    public QuanLyNhanVien(String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String chucvu, String taikhoan, int trangthai) {
+    public QuanLyNhanVien(String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String taikhoan, String chucvu, int trangthai) {
         this.ma = ma;
         this.ten = ten;
         this.gioitinh = gioitinh;
@@ -35,8 +36,8 @@ public class QuanLyNhanVien {
         this.sdt = sdt;
         this.diachi = diachi;
         this.email = email;
-        this.chucvu = chucvu;
         this.taikhoan = taikhoan;
+        this.chucvu = chucvu;
         this.trangthai = trangthai;
     }
 
@@ -96,20 +97,20 @@ public class QuanLyNhanVien {
         this.email = email;
     }
 
-    public String getChucvu() {
-        return chucvu;
-    }
-
-    public void setChucvu(String chucvu) {
-        this.chucvu = chucvu;
-    }
-
     public String getTaikhoan() {
         return taikhoan;
     }
 
     public void setTaikhoan(String taikhoan) {
         this.taikhoan = taikhoan;
+    }
+
+    public String getChucvu() {
+        return chucvu;
+    }
+
+    public void setChucvu(String chucvu) {
+        this.chucvu = chucvu;
     }
 
     public int getTrangthai() {
@@ -119,5 +120,7 @@ public class QuanLyNhanVien {
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
+
+
 
 }

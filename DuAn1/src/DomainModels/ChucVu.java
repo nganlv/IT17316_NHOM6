@@ -45,8 +45,8 @@ public class ChucVu {
     public void setTen(String ten) {
         this.ten = ten;
     }
-
-//    public String toString() {
-//        return ten;
-//    }
+@Override
+    public String toString() {
+        return ten;
+    }
 }
