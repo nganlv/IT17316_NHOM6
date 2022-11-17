@@ -141,7 +141,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/icons8-watch-48.png"/>
+                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\IT17316_NHOM6\DuAn1\src\Image\icons8-watch-48.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; B&#xc1;N &#x110;&#x1ed2;NG H&#x1ed2;"/>
                   </Properties>
@@ -172,7 +172,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbBanHang" pref="39" max="32767" attributes="0"/>
+                          <Component id="jlbBanHang" pref="53" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -189,7 +189,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/icons8-sell-48.png"/>
+                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\IT17316_NHOM6\DuAn1\src\Image\icons8-sell-48.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="B&#xe1;n h&#xe0;ng"/>
                   </Properties>
@@ -220,7 +220,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbSanPham" pref="39" max="32767" attributes="0"/>
+                          <Component id="jlbSanPham" pref="53" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -237,7 +237,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/icons8-unpacking-30.png"/>
+                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\IT17316_NHOM6\DuAn1\src\Image\icons8-unpacking-30.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1ea3;n ph&#x1ea9;m"/>
                   </Properties>
@@ -285,7 +285,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/icons8-get-a-receipt-48.png"/>
+                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\IT17316_NHOM6\DuAn1\src\Image\icons8-get-a-receipt-48.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="H&#xf3;a &#x111;&#x1a1;n"/>
                   </Properties>
@@ -316,7 +316,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbKhachHang" max="32767" attributes="0"/>
+                          <Component id="jlbKhachHang" pref="53" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -333,7 +333,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/icons8-search-client-40.png"/>
+                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\IT17316_NHOM6\DuAn1\src\Image\icons8-search-client-40.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Kh&#xe1;ch h&#xe0;ng"/>
                   </Properties>
@@ -364,7 +364,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbNhanVien" max="32767" attributes="0"/>
+                          <Component id="jlbNhanVien" pref="53" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -381,7 +381,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/icons8-staff-48.png"/>
+                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\IT17316_NHOM6\DuAn1\src\Image\icons8-staff-48.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Nh&#xe2;n vi&#xea;n"/>
                   </Properties>
@@ -413,7 +413,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jlbKhuyenMai" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -429,7 +429,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/icons8-sale-price-tag-48.png"/>
+                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\IT17316_NHOM6\DuAn1\src\Image\icons8-sale-price-tag-48.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Khuy&#x1ebf;n m&#xe3;i"/>
                   </Properties>
@@ -460,7 +460,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlbThongKe" pref="39" max="32767" attributes="0"/>
+                          <Component id="jlbThongKe" pref="53" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -477,7 +477,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/Statistics.png"/>
+                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\IT17316_NHOM6\DuAn1\src\Image\Statistics.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
                   </Properties>
@@ -525,7 +525,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Image/Exit.png"/>
+                      <Image iconType="2" name="C:\Users\nguye\OneDrive\Documents\GitHub\IT17316_NHOM6\DuAn1\src\Image\Exit.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Tho&#xe1;t"/>
                   </Properties>
