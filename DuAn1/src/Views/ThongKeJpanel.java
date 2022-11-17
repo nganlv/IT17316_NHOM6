@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -150,7 +150,7 @@ public class ThongKeJpanel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnseachActionPerformed
 
     private void txtlammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtlammoiActionPerformed
-        // TODO add your handling code here:
+layds();        // TODO add your handling code here:
     }//GEN-LAST:event_txtlammoiActionPerformed
 
     private void txtseachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtseachActionPerformed
