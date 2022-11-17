@@ -157,7 +157,7 @@ public class ThongKeJpanel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtseachActionPerformed
     public List<QuanLyThongKe> layds() {
-        model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Địa Chỉ", "SDT", "Quốc Gia"});
+        model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
         model.setRowCount(0);
         List<QuanLyThongKe> dsnv = service.getAll();
         for (QuanLyThongKe kh : dsnv) {
@@ -182,7 +182,7 @@ public class ThongKeJpanel extends javax.swing.JFrame {
         } else {
 
             String ma = txtseach.getText();
-            model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Địa Chỉ", "SDT", "Quốc Gia"});
+            model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
             model.setRowCount(0);
             List<QuanLyThongKe> dsnv = service.tim(ma);
             for (QuanLyThongKe kh : dsnv) {
