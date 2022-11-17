@@ -26,7 +26,12 @@ public class ITaiKhoan implements  QLTaiKhoan{
     public List<QuanLyTaiKhoan> getView() {
         return TKRepo.getAll();
     }
+    @Override
+    public List<TaiKhoan> getAlls() {
+        return TKRepo.getView();
+    }
     
+
     @Override
     public Boolean checkMa(String maChucVu) {
         List<QuanLyTaiKhoan> listCV = TKRepo.getAll();
@@ -65,5 +70,10 @@ public class ITaiKhoan implements  QLTaiKhoan{
         }else{
             return "Xóa thành công";
         }
+    }
+
+    @Override
+    public TaiKhoan getOne(String maTK) {
+        return TKRepo.getOne(maTK);
     }
 }

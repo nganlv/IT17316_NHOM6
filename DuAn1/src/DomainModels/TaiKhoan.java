@@ -56,4 +56,8 @@ public class TaiKhoan {
         this.matkhau = matkhau;
     }
     
+    @Override
+    public String toString() {
+        return ten;
+    }
 }

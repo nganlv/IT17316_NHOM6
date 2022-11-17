@@ -101,7 +101,7 @@ public class ChuyenManHinhController {
                     break;
             }
             root.removeAll();
-//            root.setLayout(new BorderLayout());
+            root.setLayout(new BorderLayout());
             root.add(node);
             root.validate();
             root.repaint();

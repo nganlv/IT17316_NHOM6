@@ -4,13 +4,16 @@
  */
 package Services;
 
-import ViewModels.QuanLySanPham;
+import ViewModels.QLSanPham_BanHang;
 import java.util.List;
 
 /**
  *
  * @author levan
  */
-public interface ISanPhamService {
-    List<QuanLySanPham> getAllSps();
+public interface ISanPham_BanHangService {
+    List<QLSanPham_BanHang> getAllSps();
+    List<QLSanPham_BanHang> timSpTheoMas();
+
+    public List<QLSanPham_BanHang> timSpTheoMas(String text);
 }
