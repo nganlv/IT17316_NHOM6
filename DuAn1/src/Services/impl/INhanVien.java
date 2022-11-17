@@ -55,4 +55,15 @@ public class INhanVien implements QLNhanVien{
             return "Xóa nhân viên thành công";
         }
     }
+
+    @Override
+    public Boolean checkMa(String maNV) {
+   List<QuanLyNhanVien> listNV = nvRepo.getAllNV();
+        for (QuanLyNhanVien nv : listNV) {
+            if(nv.getMa().equalsIgnoreCase(maNV)){
+                return true;
+            }
+        } 
+        return false;
+    }
 }

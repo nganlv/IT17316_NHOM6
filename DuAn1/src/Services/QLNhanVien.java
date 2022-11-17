@@ -17,4 +17,5 @@ public interface QLNhanVien {
      String add(NhanVien nv);
      String update(NhanVien nv);
       String delete(String maNV);
+       Boolean checkMa(String maNV);
 }
