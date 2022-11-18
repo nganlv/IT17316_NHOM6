@@ -34,8 +34,24 @@ public class FormMain extends javax.swing.JFrame {
         listItem.add(new DanhMucBean("NhanVien", jpnNhanVien, jlbNhanVien));
         listItem.add(new DanhMucBean("ThongKe", jpnThongKe, jlbThongKe));
         controller.setEvent(listItem);
+        chuChay();
     }
-
+private void chuChay() {
+        new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+                    String first = jlbDongHo.getText().substring(0, 1);
+                    String last = jlbDongHo.getText().substring(1);
+                    jlbDongHo.setText(last + first);
+                    try {
+                        Thread.sleep(200);
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }.start();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +64,7 @@ public class FormMain extends javax.swing.JFrame {
         jpnRoot = new javax.swing.JPanel();
         jpnMenu = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jlbDongHo = new javax.swing.JLabel();
         jpnBanHang = new javax.swing.JPanel();
         jlbBanHang = new javax.swing.JLabel();
         jpnSanPham = new javax.swing.JPanel();
@@ -64,7 +80,7 @@ public class FormMain extends javax.swing.JFrame {
         jpnThongKe = new javax.swing.JPanel();
         jlbThongKe = new javax.swing.JLabel();
         jpnThoat = new javax.swing.JPanel();
-        jlbThoat = new javax.swing.JLabel();
+        btnThoat = new javax.swing.JButton();
         jpnView = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,25 +91,22 @@ public class FormMain extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 102));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\icons8-watch-48.png")); // NOI18N
-        jLabel1.setText("QUẢN LÝ BÁN ĐỒNG HỒ");
+        jlbDongHo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jlbDongHo.setForeground(new java.awt.Color(0, 153, 153));
+        jlbDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbDongHo.setText("QUẢN LÝ BÁN ĐỒNG HỒ    ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jlbDongHo, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                .addComponent(jlbDongHo, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -103,7 +116,6 @@ public class FormMain extends javax.swing.JFrame {
         jlbBanHang.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbBanHang.setForeground(new java.awt.Color(255, 255, 255));
         jlbBanHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbBanHang.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\icons8-sell-48.png")); // NOI18N
         jlbBanHang.setText("Bán hàng");
 
         javax.swing.GroupLayout jpnBanHangLayout = new javax.swing.GroupLayout(jpnBanHang);
@@ -119,7 +131,7 @@ public class FormMain extends javax.swing.JFrame {
             jpnBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnBanHangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(jlbBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -129,7 +141,6 @@ public class FormMain extends javax.swing.JFrame {
         jlbSanPham.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbSanPham.setForeground(new java.awt.Color(255, 255, 255));
         jlbSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbSanPham.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\icons8-unpacking-30.png")); // NOI18N
         jlbSanPham.setText("Sản phẩm");
 
         javax.swing.GroupLayout jpnSanPhamLayout = new javax.swing.GroupLayout(jpnSanPham);
@@ -145,7 +156,7 @@ public class FormMain extends javax.swing.JFrame {
             jpnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnSanPhamLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(jlbSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -155,7 +166,6 @@ public class FormMain extends javax.swing.JFrame {
         jlbHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         jlbHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbHoaDon.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\icons8-get-a-receipt-48.png")); // NOI18N
         jlbHoaDon.setText("Hóa đơn");
 
         javax.swing.GroupLayout jpnHoaDonLayout = new javax.swing.GroupLayout(jpnHoaDon);
@@ -170,7 +180,7 @@ public class FormMain extends javax.swing.JFrame {
         jpnHoaDonLayout.setVerticalGroup(
             jpnHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnHoaDonLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jlbHoaDon)
                 .addGap(24, 24, 24))
         );
@@ -181,7 +191,6 @@ public class FormMain extends javax.swing.JFrame {
         jlbKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         jlbKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbKhachHang.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\icons8-search-client-40.png")); // NOI18N
         jlbKhachHang.setText("Khách hàng");
 
         javax.swing.GroupLayout jpnKhachHangLayout = new javax.swing.GroupLayout(jpnKhachHang);
@@ -197,7 +206,7 @@ public class FormMain extends javax.swing.JFrame {
             jpnKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnKhachHangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(jlbKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -207,7 +216,6 @@ public class FormMain extends javax.swing.JFrame {
         jlbNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         jlbNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbNhanVien.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\icons8-staff-48.png")); // NOI18N
         jlbNhanVien.setText("Nhân viên");
 
         javax.swing.GroupLayout jpnNhanVienLayout = new javax.swing.GroupLayout(jpnNhanVien);
@@ -223,7 +231,7 @@ public class FormMain extends javax.swing.JFrame {
             jpnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnNhanVienLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(jlbNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -233,7 +241,6 @@ public class FormMain extends javax.swing.JFrame {
         jlbKhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbKhuyenMai.setForeground(new java.awt.Color(255, 255, 255));
         jlbKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbKhuyenMai.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\icons8-sale-price-tag-48.png")); // NOI18N
         jlbKhuyenMai.setText("Khuyến mãi");
 
         javax.swing.GroupLayout jpnKhuyenMaiLayout = new javax.swing.GroupLayout(jpnKhuyenMai);
@@ -250,7 +257,7 @@ public class FormMain extends javax.swing.JFrame {
             .addGroup(jpnKhuyenMaiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlbKhuyenMai)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jpnThongKe.setBackground(new java.awt.Color(255, 102, 51));
@@ -259,7 +266,6 @@ public class FormMain extends javax.swing.JFrame {
         jlbThongKe.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbThongKe.setForeground(new java.awt.Color(255, 255, 255));
         jlbThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbThongKe.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\Statistics.png")); // NOI18N
         jlbThongKe.setText("Thống kê");
 
         javax.swing.GroupLayout jpnThongKeLayout = new javax.swing.GroupLayout(jpnThongKe);
@@ -275,34 +281,32 @@ public class FormMain extends javax.swing.JFrame {
             jpnThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnThongKeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                .addComponent(jlbThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jpnThoat.setBackground(new java.awt.Color(153, 153, 153));
         jpnThoat.setPreferredSize(new java.awt.Dimension(244, 65));
 
-        jlbThoat.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jlbThoat.setForeground(new java.awt.Color(255, 255, 255));
-        jlbThoat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbThoat.setIcon(new javax.swing.ImageIcon("C:\\Users\\nguye\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\Exit.png")); // NOI18N
-        jlbThoat.setText("Thoát");
+        btnThoat.setBackground(new java.awt.Color(153, 153, 153));
+        btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnThoat.setForeground(new java.awt.Color(255, 255, 255));
+        btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpnThoatLayout = new javax.swing.GroupLayout(jpnThoat);
         jpnThoat.setLayout(jpnThoatLayout);
         jpnThoatLayout.setHorizontalGroup(
             jpnThoatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnThoatLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpnThoatLayout.setVerticalGroup(
             jpnThoatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnThoatLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlbThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(btnThoat, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jpnMenuLayout = new javax.swing.GroupLayout(jpnMenu);
@@ -383,6 +387,10 @@ public class FormMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnThoatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -420,15 +428,15 @@ public class FormMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnThoat;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jlbBanHang;
+    private javax.swing.JLabel jlbDongHo;
     private javax.swing.JLabel jlbHoaDon;
     private javax.swing.JLabel jlbKhachHang;
     private javax.swing.JLabel jlbKhuyenMai;
     private javax.swing.JLabel jlbNhanVien;
     private javax.swing.JLabel jlbSanPham;
-    private javax.swing.JLabel jlbThoat;
     private javax.swing.JLabel jlbThongKe;
     private javax.swing.JPanel jpnBanHang;
     private javax.swing.JPanel jpnHoaDon;
