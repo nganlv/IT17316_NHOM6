@@ -17,6 +17,7 @@ public class QuanLyThongKe {
     private Double Dongia, ThanhTien;
 
     public QuanLyThongKe() {
+        
     }
     
     public QuanLyThongKe(String MaSP, String TenSP, String ngay, int SoLuong, Double Dongia, Double ThanhTien) {

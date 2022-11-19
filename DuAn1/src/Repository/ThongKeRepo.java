@@ -5,7 +5,9 @@
 package Repository;
 
 import DomainModels.ThongKe;
+import Services.impl.ThongKeService;
 import Utilities.DBContext;
+import ViewModels.QuanLyThongKe;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +25,7 @@ public class ThongKeRepo {
         try {
             List<ThongKe> listKh = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong,  HoaDonChiTiet.DonGia * HoaDonChiTiet.SoLuong'Tổng Tiền '\n"
+            String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong,  HoaDonChiTiet.DonGia * HoaDonChiTiet.SoLuong as 'Tong' \n"
                     + "FROM     HoaDon INNER JOIN\n"
                     + "                  KhachHang ON HoaDon.IdKH = KhachHang.Id INNER JOIN\n"
                     + "                  NhanVien ON HoaDon.IdNV = NhanVien.Id INNER JOIN\n"
@@ -35,12 +37,12 @@ public class ThongKeRepo {
             while (rs.next()) {
                 ThongKe kh = new ThongKe();
 
-                kh.setMaSP(rs.getString("SanPham.Ma"));
-                kh.setTenSP(rs.getString("SanPham.Ten"));
-                kh.setNgay(rs.getString("HoaDon.NgayThanhToan"));
-                kh.setSoLuong(rs.getInt("HoaDonChiTiet.SoLuong"));
-                kh.setDongia(rs.getDouble("HoaDonChiTiet.DonGia"));
-                kh.setThanhTien(rs.getDouble("HoaDonChiTiet.SoLuong * HoaDonChiTiet.DonGia"));
+                kh.setMaSP(rs.getString("Ma"));
+                kh.setTenSP(rs.getString("Ten"));
+                kh.setNgay(rs.getString("NgayThanhToan"));
+                kh.setSoLuong(rs.getInt("SoLuong"));
+                kh.setDongia(rs.getDouble("DonGia"));
+                kh.setThanhTien(rs.getDouble("Tong"));
                 listKh.add(kh);
 
             }
@@ -58,26 +60,26 @@ public class ThongKeRepo {
         try {
             List<ThongKe> listKh = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong,  HoaDonChiTiet.DonGia * HoaDonChiTiet.SoLuong'Tổng Tiền '\n"
+            String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong,  HoaDonChiTiet.DonGia * HoaDonChiTiet.SoLuong as 'Tong'\n"
                     + "FROM     HoaDon INNER JOIN\n"
                     + "                  KhachHang ON HoaDon.IdKH = KhachHang.Id INNER JOIN\n"
                     + "                  NhanVien ON HoaDon.IdNV = NhanVien.Id INNER JOIN\n"
                     + "                  HoaDonChiTiet ON HoaDon.Id = HoaDonChiTiet.IdHoaDon INNER JOIN\n"
                     + "                  ChiTietSP ON HoaDonChiTiet.IdChiTietSP = ChiTietSP.Id INNER JOIN\n"
-                    + "                  SanPham ON ChiTietSP.IdSP = SanPham.Id"
-                    + " where Ma = ? ";
+                    + "                  SanPham ON ChiTietSP.IdSP = SanPham.Id\n"
+                    + "				where SanPham.Ma= ? ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ma);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 ThongKe kh = new ThongKe();
 
-                kh.setMaSP(rs.getString("SanPham.Ma"));
-                kh.setTenSP(rs.getString("SanPham.Ten"));
-                kh.setNgay(rs.getString("HoaDon.NgayThanhToan"));
-                kh.setSoLuong(rs.getInt("HoaDonChiTiet.SoLuong"));
-                kh.setDongia(rs.getDouble("HoaDonChiTiet.DonGia"));
-                kh.setThanhTien(rs.getDouble("HoaDonChiTiet.SoLuong * HoaDonChiTiet.DonGia"));
+                kh.setMaSP(rs.getString("Ma"));
+                kh.setTenSP(rs.getString("Ten"));
+                kh.setNgay(rs.getString("NgayThanhToan"));
+                kh.setSoLuong(rs.getInt("SoLuong"));
+                kh.setDongia(rs.getDouble("DonGia"));
+                kh.setThanhTien(rs.getDouble("Tong"));
                 listKh.add(kh);
 
             }
@@ -89,4 +91,5 @@ public class ThongKeRepo {
         }
 
     }
+
 }
