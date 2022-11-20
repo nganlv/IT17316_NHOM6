@@ -13,9 +13,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Services.ISanPham_BanHangService;
 
+<<<<<<< HEAD
 import ViewModels.QlHoaDonCho;
 
 
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -45,8 +48,11 @@ private  final IHoaDonChoService iHoaDonChoService=new HoaDonChoService();
                     sdf.applyPattern("hh:mm:ss aa");
                     Date date = new Date();
 
+<<<<<<< HEAD
                     jblClock.setText(sdf.format(date));
 
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
                     try {
                         Thread.sleep(1000);
                     } catch (Exception e) {
@@ -137,6 +143,7 @@ private void loadTableHoaDonCho(){
         jTextField9 = new javax.swing.JTextField();
         btnThanhToan = new javax.swing.JButton();
 
+<<<<<<< HEAD
         btnTaoHd = new javax.swing.JButton();
         btnHuyHd = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
@@ -146,6 +153,8 @@ private void loadTableHoaDonCho(){
         jlbTenKh = new javax.swing.JLabel();
         jblClock = new javax.swing.JLabel();
 
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -502,10 +511,13 @@ private void loadTableHoaDonCho(){
         );
 
 
+<<<<<<< HEAD
         jblClock.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jblClock.setForeground(new java.awt.Color(255, 51, 51));
         jblClock.setText("00:00 AM");
 
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -518,6 +530,7 @@ private void loadTableHoaDonCho(){
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
 
+<<<<<<< HEAD
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -525,6 +538,8 @@ private void loadTableHoaDonCho(){
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -668,10 +683,13 @@ private void fillHoaDonCho1(int index){
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
 
+<<<<<<< HEAD
     private javax.swing.JLabel jblClock;
     private javax.swing.JLabel jlbMaKh;
     private javax.swing.JLabel jlbTenKh;
 
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
     private javax.swing.JTable tblGioHang;
     private javax.swing.JTable tblHoaDonCho;
     private javax.swing.JTable tblSanPham;
