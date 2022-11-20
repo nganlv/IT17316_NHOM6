@@ -19,7 +19,8 @@ import java.util.List;
  * @author nguye
  */
 public class NhanVienRepo {
-     public List<QuanLyNhanVien> getAllNV() {
+
+    public List<QuanLyNhanVien> getAllNV() {
         List<QuanLyNhanVien> listNV = new ArrayList<>();
         String sql = """
                      select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
@@ -30,7 +31,7 @@ public class NhanVienRepo {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 listNV.add(new QuanLyNhanVien(rs.getString("Ma"), rs.getString("HoTen"),
-                       rs.getString("GioiTinh"), rs.getDate("NgaySinh"), rs.getString("Sdt"), rs.getString("DiaChi"),
+                        rs.getString("GioiTinh"), rs.getDate("NgaySinh"), rs.getString("Sdt"), rs.getString("DiaChi"),
                         rs.getString("Email"), rs.getString("TaiKhoan"), rs.getString("ChucVu"), rs.getInt("TrangThai")));
             }
 
@@ -42,8 +43,9 @@ public class NhanVienRepo {
 
         return null;
     }
-     public Integer addNV(NhanVien nv) throws SQLException{
-         String sql="""
+
+    public Integer addNV(NhanVien nv) throws SQLException {
+        String sql = """
                     insert into NhanVien
                     (Ma
                     ,HoTen
@@ -56,28 +58,27 @@ public class NhanVienRepo {
                     ,idCV
                     ,TrangThai)
                     values(?,?,?,?,?,?,?,?,?,?) """;
-      
-             
-             
-          try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);){
-              ps.setString(1, nv.getMa());
-              ps.setString(2, nv.getTen());
-              ps.setString(3, nv.getGioitinh());
-              ps.setDate(4, new java.sql.Date(nv.getNgaysinh().getTime()));
-              ps.setString(5, nv.getSdt());
-              ps.setString(6, nv.getDiachi());
-              ps.setString(7, nv.getEmail());
-              ps.setString(8, nv.getIdtk());
-              ps.setString(9, nv.getIdcv());
-              ps.setInt(10, nv.getTrangthai());
-              return ps.executeUpdate();
-          }catch(SQLException ex){
-              ex.printStackTrace();
-          }
-           return -1;
-                        
-     }
-      public Integer updates(NhanVien nv) {
+
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(1, nv.getMa());
+            ps.setString(2, nv.getTen());
+            ps.setString(3, nv.getGioitinh());
+            ps.setDate(4, new java.sql.Date(nv.getNgaysinh().getTime()));
+            ps.setString(5, nv.getSdt());
+            ps.setString(6, nv.getDiachi());
+            ps.setString(7, nv.getEmail());
+            ps.setString(8, nv.getIdtk());
+            ps.setString(9, nv.getIdcv());
+            ps.setInt(10, nv.getTrangthai());
+            return ps.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return -1;
+
+    }
+
+    public Integer updates(NhanVien nv) {
         String sql = """
                      UPDATE [dbo].[NhanVien]
                              SET [HoTen] = ?
@@ -93,8 +94,7 @@ public class NhanVienRepo {
         try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setObject(10, nv.getMa());
             ps.setObject(1, nv.getTen());
-            
-            
+
             ps.setObject(2, nv.getGioitinh());
             ps.setObject(3, nv.getNgaysinh());
             ps.setObject(4, nv.getSdt());
@@ -112,7 +112,8 @@ public class NhanVienRepo {
 
         return -1;
     }
-       public Integer deletes(String maNV) {
+
+    public Integer deletes(String maNV) {
         String sql = """
                      DELETE FROM [dbo].[NhanVien]
                                  WHERE Ma = ? """;
@@ -126,5 +127,79 @@ public class NhanVienRepo {
         }
 
         return -1;
+    }
+
+    public List<NhanVien> getTim(String ma) {
+        List<NhanVien> listTNV = new ArrayList<>();
+        String sql = """
+                     select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
+                                            from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id
+                                            				join ChucVu on NhanVien.IdCV = ChucVu.Id 
+                                          where NhanVien.Ma= ?  """;
+
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(1, ma);
+       
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                NhanVien nv = new NhanVien();
+                nv.setMa(rs.getString("Ma"));
+                nv.setTen(rs.getString("HoTen"));
+                nv.setGioitinh(rs.getString("GioiTinh"));
+                nv.setNgaysinh(rs.getDate("NgaySinh"));
+                nv.setSdt(rs.getString("Sdt"));
+                nv.setDiachi(rs.getString("DiaChi"));
+                nv.setEmail(rs.getString("Email"));
+                nv.setIdtk(rs.getString("TaiKhoan"));
+                nv.setIdcv(rs.getString("ChucVu"));
+                nv.setTrangthai(rs.getInt("TrangThai"));
+                listTNV.add(nv);
+
+            }
+
+            return listTNV;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    
+    public List<NhanVien> getTimTen(String ten) {
+        List<NhanVien> listTNV = new ArrayList<>();
+        String sql = """
+                     select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
+                                            from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id
+                                            				join ChucVu on NhanVien.IdCV = ChucVu.Id 
+                                          where NhanVien.HoTen= ?  """;
+
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+            ps.setString(2, ten);
+       
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                NhanVien nv = new NhanVien();
+                nv.setMa(rs.getString("Ma"));
+                nv.setTen(rs.getString("HoTen"));
+                nv.setGioitinh(rs.getString("GioiTinh"));
+                nv.setNgaysinh(rs.getDate("NgaySinh"));
+                nv.setSdt(rs.getString("Sdt"));
+                nv.setDiachi(rs.getString("DiaChi"));
+                nv.setEmail(rs.getString("Email"));
+                nv.setIdtk(rs.getString("TaiKhoan"));
+                nv.setIdcv(rs.getString("ChucVu"));
+                nv.setTrangthai(rs.getInt("TrangThai"));
+                listTNV.add(nv);
+
+            }
+
+            return listTNV;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

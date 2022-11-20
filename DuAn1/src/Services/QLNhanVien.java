@@ -18,4 +18,6 @@ public interface QLNhanVien {
      String update(NhanVien nv);
       String delete(String maNV);
        Boolean checkMa(String maNV);
+       List<QuanLyNhanVien> getTims(String ma);
+       List<QuanLyNhanVien> getTimTens(String ten);
 }
