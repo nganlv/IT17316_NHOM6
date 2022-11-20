@@ -83,7 +83,7 @@ public class FormMain extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -152,7 +152,7 @@ public class FormMain extends javax.swing.JFrame {
         jlbHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         jlbHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-get-a-receipt-48.png"))); // NOI18N
+
         jlbHoaDon.setText("Hóa đơn");
 
         javax.swing.GroupLayout jpnHoaDonLayout = new javax.swing.GroupLayout(jpnHoaDon);
@@ -297,7 +297,7 @@ public class FormMain extends javax.swing.JFrame {
         jpnThoatLayout.setVerticalGroup(
             jpnThoatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnThoatLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(jlbThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
