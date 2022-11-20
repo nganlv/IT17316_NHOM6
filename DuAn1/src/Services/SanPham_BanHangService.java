@@ -5,6 +5,7 @@
 package Services;
 
 import DomainModels.SanPham_BanHang;
+import Repository.ISanPham_BanHangRepo;
 import Repository.SanPham_BanHangRepo;
 import ViewModels.QLSanPham_BanHang;
 import java.util.ArrayList;
@@ -16,12 +17,12 @@ import java.util.List;
  */
 public class SanPham_BanHangService implements ISanPham_BanHangService {
 
-    private final SanPham_BanHangRepo sanPhamRepo = new SanPham_BanHangRepo();
+    private final ISanPham_BanHangRepo iSanPham_BanHangRepo = new SanPham_BanHangRepo();
 
     public List<QLSanPham_BanHang> getAllSps() {
         try {
             List<QLSanPham_BanHang> listSp = new ArrayList<>();
-            for (SanPham_BanHang sp : sanPhamRepo.getAllSp()) {
+            for (SanPham_BanHang sp : iSanPham_BanHangRepo.getAllSp()) {
                 listSp.add(new QLSanPham_BanHang(sp.getMa(), sp.getTen(), sp.getDonGia(),sp.getGiamGia(),sp.getMauSac(), 
                         sp.getChatLieu(), sp.getKichThuoc(), sp.getLoai(),sp.getGioiTinh(),sp.getKieuMay(), sp.getSoLuong()));             
             }
@@ -34,7 +35,7 @@ public class SanPham_BanHangService implements ISanPham_BanHangService {
     public List<QLSanPham_BanHang> timSpTheoMas(String ma) {
         try {
             List<QLSanPham_BanHang> listSp = new ArrayList<>();
-            for (SanPham_BanHang sp : sanPhamRepo.timSpTheoMa(ma)) {
+            for (SanPham_BanHang sp : iSanPham_BanHangRepo.timSpTheoMa(ma)) {
                 listSp.add(new QLSanPham_BanHang(sp.getMa(), sp.getTen(), sp.getDonGia(),sp.getGiamGia(),sp.getMauSac(), 
                         sp.getChatLieu(), sp.getKichThuoc(), sp.getLoai(),sp.getGioiTinh(),sp.getKieuMay(), sp.getSoLuong()));             
             }
