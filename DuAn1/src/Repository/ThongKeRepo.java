@@ -23,11 +23,13 @@ public class ThongKeRepo {
         try {
             List<ThongKe> listKh = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.SoLuong, HoaDonChiTiet.DonGia,\n"
-                    + "HoaDonChiTiet.SoLuong * HoaDonChiTiet.DonGia'Thành Tiền'\n"
-                    + "FROM     SanPham INNER JOIN\n"
-                    + "                  HoaDon ON SanPham.Id = HoaDon.Id INNER JOIN\n"
-                    + "                  HoaDonChiTiet ON HoaDon.Id = HoaDonChiTiet.IdHoaDon";
+            String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong,  HoaDonChiTiet.DonGia * HoaDonChiTiet.SoLuong'Tổng Tiền '\n"
+                    + "FROM     HoaDon INNER JOIN\n"
+                    + "                  KhachHang ON HoaDon.IdKH = KhachHang.Id INNER JOIN\n"
+                    + "                  NhanVien ON HoaDon.IdNV = NhanVien.Id INNER JOIN\n"
+                    + "                  HoaDonChiTiet ON HoaDon.Id = HoaDonChiTiet.IdHoaDon INNER JOIN\n"
+                    + "                  ChiTietSP ON HoaDonChiTiet.IdChiTietSP = ChiTietSP.Id INNER JOIN\n"
+                    + "                  SanPham ON ChiTietSP.IdSP = SanPham.Id";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -56,11 +58,13 @@ public class ThongKeRepo {
         try {
             List<ThongKe> listKh = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.SoLuong, HoaDonChiTiet.DonGia,\n"
-                    + "HoaDonChiTiet.SoLuong * HoaDonChiTiet.DonGia'Thành Tiền'\n"
-                    + "FROM     SanPham INNER JOIN\n"
-                    + "                  HoaDon ON SanPham.Id = HoaDon.Id INNER JOIN\n"
-                    + "                  HoaDonChiTiet ON HoaDon.Id = HoaDonChiTiet.IdHoaDon"
+            String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong,  HoaDonChiTiet.DonGia * HoaDonChiTiet.SoLuong'Tổng Tiền '\n"
+                    + "FROM     HoaDon INNER JOIN\n"
+                    + "                  KhachHang ON HoaDon.IdKH = KhachHang.Id INNER JOIN\n"
+                    + "                  NhanVien ON HoaDon.IdNV = NhanVien.Id INNER JOIN\n"
+                    + "                  HoaDonChiTiet ON HoaDon.Id = HoaDonChiTiet.IdHoaDon INNER JOIN\n"
+                    + "                  ChiTietSP ON HoaDonChiTiet.IdChiTietSP = ChiTietSP.Id INNER JOIN\n"
+                    + "                  SanPham ON ChiTietSP.IdSP = SanPham.Id"
                     + " where Ma = ? ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ma);
