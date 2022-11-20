@@ -9,6 +9,7 @@ import Repository.NhanVienRepo;
 import Services.QLNhanVien;
 import ViewModels.QuanLyNhanVien;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,4 +67,40 @@ public class INhanVien implements QLNhanVien{
         } 
         return false;
     }
+
+  
+    
+
+    @Override
+    public List<QuanLyNhanVien> getTims(String ma) {
+        try {
+            List<QuanLyNhanVien> listKh = new ArrayList<>();
+            for (NhanVien kh : nvRepo.getTim(ma)) {
+                listKh.add(new QuanLyNhanVien(kh.getMa(), kh.getTen(), kh.getGioitinh(), kh.getNgaysinh(),
+                        kh.getSdt(), kh.getDiachi(),kh.getEmail(),kh.getIdtk(),kh.getIdcv(),kh.getTrangthai()));
+            }
+            return listKh;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return null;
+    }
+    
+ @Override
+    public List<QuanLyNhanVien> getTimTens(String ten) {
+        try {
+            List<QuanLyNhanVien> listKh = new ArrayList<>();
+            for (NhanVien kh : nvRepo.getTim(ten)) {
+                listKh.add(new QuanLyNhanVien(kh.getMa(), kh.getTen(), kh.getGioitinh(), kh.getNgaysinh(),
+                        kh.getSdt(), kh.getDiachi(),kh.getEmail(),kh.getIdtk(),kh.getIdcv(),kh.getTrangthai()));
+            }
+            return listKh;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return null;
+    }
+
 }

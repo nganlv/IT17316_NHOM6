@@ -19,7 +19,6 @@ public class NhanVien {
    private String sdt;
    private String diachi;
    private String email;
-   private String idCH;
    private String idtk;
    private String idcv;
    private int trangthai;
@@ -27,7 +26,7 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String id, String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String idCH, String idtk, String idcv, int trangthai) {
+    public NhanVien(String id, String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String idtk, String idcv, int trangthai) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
@@ -36,11 +35,12 @@ public class NhanVien {
         this.sdt = sdt;
         this.diachi = diachi;
         this.email = email;
-        this.idCH = idCH;
         this.idtk = idtk;
         this.idcv = idcv;
         this.trangthai = trangthai;
     }
+
+   
 
     public String getId() {
         return id;
@@ -106,14 +106,6 @@ public class NhanVien {
         this.email = email;
     }
 
-    public String getIdCH() {
-        return idCH;
-    }
-
-    public void setIdCH(String idCH) {
-        this.idCH = idCH;
-    }
-
     public String getIdtk() {
         return idtk;
     }
@@ -137,6 +129,7 @@ public class NhanVien {
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
-   
+
+ 
    
 }
