@@ -12,7 +12,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Services.ISanPham_BanHangService;
-import ViewModels.QlHoaDonCho;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -41,7 +41,7 @@ private  final IHoaDonChoService iHoaDonChoService=new HoaDonChoService();
                     SimpleDateFormat sdf = new SimpleDateFormat();
                     sdf.applyPattern("hh:mm:ss aa");
                     Date date = new Date();
-                    jblClock.setText(sdf.format(date));
+
                     try {
                         Thread.sleep(1000);
                     } catch (Exception e) {
@@ -131,14 +131,7 @@ private void loadTableHoaDonCho(){
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
         btnThanhToan = new javax.swing.JButton();
-        btnTaoHd = new javax.swing.JButton();
-        btnHuyHd = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
-        btnChon = new javax.swing.JButton();
-        btnThayDoi = new javax.swing.JButton();
-        jlbMaKh = new javax.swing.JLabel();
-        jlbTenKh = new javax.swing.JLabel();
-        jblClock = new javax.swing.JLabel();
+
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -494,9 +487,7 @@ private void loadTableHoaDonCho(){
                 .addContainerGap(142, Short.MAX_VALUE))
         );
 
-        jblClock.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jblClock.setForeground(new java.awt.Color(255, 51, 51));
-        jblClock.setText("00:00 AM");
+
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -504,16 +495,11 @@ private void loadTableHoaDonCho(){
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -531,7 +517,9 @@ private void loadTableHoaDonCho(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlbTime, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -654,9 +642,7 @@ private void fillHoaDonCho1(int index){
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
-    private javax.swing.JLabel jblClock;
-    private javax.swing.JLabel jlbMaKh;
-    private javax.swing.JLabel jlbTenKh;
+
     private javax.swing.JTable tblGioHang;
     private javax.swing.JTable tblHoaDonCho;
     private javax.swing.JTable tblSanPham;
