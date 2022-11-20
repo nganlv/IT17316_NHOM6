@@ -95,12 +95,25 @@ private void chuChay() {
         jlbDongHo.setForeground(new java.awt.Color(0, 153, 153));
         jlbDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+<<<<<<< HEAD
+        jlbDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-watch-48.png"))); // NOI18N
+        jlbDongHo.setText("QUẢN LÝ BÁN ĐỒNG HỒ  ");
+
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 
+<<<<<<< HEAD
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jlbDongHo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,6 +442,10 @@ private void chuChay() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jlbBanHang;
     private javax.swing.JLabel jlbDongHo;

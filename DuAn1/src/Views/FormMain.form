@@ -115,6 +115,14 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
 
+<<<<<<< HEAD
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jlbDongHo" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -138,6 +146,14 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
 
+<<<<<<< HEAD
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Image/icons8-watch-48.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; B&#xc1;N &#x110;&#x1ed2;NG H&#x1ed2;  "/>
+
+=======
+>>>>>>> 5320fc5b674378fff1ea4f81b535d278d858d6ae
                   </Properties>
                 </Component>
               </SubComponents>
