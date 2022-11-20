@@ -2,16 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModels;
+package ViewModels;
 
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nguye
  */
-public class NhanVien {
-   private String id;
+public class QuanLyNhanVien {
+
    private String ma;
    private String ten;
    private String gioitinh;
@@ -19,16 +20,15 @@ public class NhanVien {
    private String sdt;
    private String diachi;
    private String email;
-   private String idCH;
-   private String idtk;
-   private String idcv;
+
+   private String taikhoan;
+      private String chucvu;
    private int trangthai;
 
-    public NhanVien() {
+    public QuanLyNhanVien() {
     }
 
-    public NhanVien(String id, String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String idCH, String idtk, String idcv, int trangthai) {
-        this.id = id;
+    public QuanLyNhanVien(String ma, String ten, String gioitinh, Date ngaysinh, String sdt, String diachi, String email, String taikhoan, String chucvu, int trangthai) {
         this.ma = ma;
         this.ten = ten;
         this.gioitinh = gioitinh;
@@ -36,18 +36,9 @@ public class NhanVien {
         this.sdt = sdt;
         this.diachi = diachi;
         this.email = email;
-        this.idCH = idCH;
-        this.idtk = idtk;
-        this.idcv = idcv;
+        this.taikhoan = taikhoan;
+        this.chucvu = chucvu;
         this.trangthai = trangthai;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getMa() {
@@ -106,28 +97,20 @@ public class NhanVien {
         this.email = email;
     }
 
-    public String getIdCH() {
-        return idCH;
+    public String getTaikhoan() {
+        return taikhoan;
     }
 
-    public void setIdCH(String idCH) {
-        this.idCH = idCH;
+    public void setTaikhoan(String taikhoan) {
+        this.taikhoan = taikhoan;
     }
 
-    public String getIdtk() {
-        return idtk;
+    public String getChucvu() {
+        return chucvu;
     }
 
-    public void setIdtk(String idtk) {
-        this.idtk = idtk;
-    }
-
-    public String getIdcv() {
-        return idcv;
-    }
-
-    public void setIdcv(String idcv) {
-        this.idcv = idcv;
+    public void setChucvu(String chucvu) {
+        this.chucvu = chucvu;
     }
 
     public int getTrangthai() {
@@ -137,6 +120,7 @@ public class NhanVien {
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
-   
-   
+
+
+
 }
