@@ -79,5 +79,25 @@ public class KhachHangRepo {
         return -1;
 
     }
+     public Integer updateK(KhachHang kh) {
+        String sql = "UPDATE KhachHang SET HoTen =?, GioiTinh =?, NgaySinh =?, Sdt =?, DiaChi =?, Email =?, NgayTao =?, NgayHetHan =?, Diem =? where  Ma = ?";
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setObject(1, kh.getHoTen());
+            ps.setObject(2, kh.getGioiTinh());
+            ps.setObject(3, kh.getNgaysinh());
+            ps.setObject(4, kh.getSdt());
+            ps.setObject(5, kh.getDiaChi());
+            ps.setObject(6, kh.getEmail());
+            ps.setObject(7, kh.getNgayTao());
+            ps.setObject(8, kh.getNgayHetHan());
+            ps.setObject(9, kh.getDiem());
+            ps.setObject(10, kh.getMaKH());
+            return ps.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 
 }

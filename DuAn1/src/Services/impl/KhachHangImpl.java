@@ -71,4 +71,13 @@ public class KhachHangImpl implements KhachHangSer {
         }
     }
 
+    @Override
+    public String update(KhachHang Kh) {
+         if(KHR.updateK(Kh) < 1){
+            return "Sửa thất bại";
+        }else{
+            return "Sửa thành công";
+        }
+    }
+
 }
