@@ -20,4 +20,6 @@ public interface KhachHangSer {
     String add(KhachHang kH);
 
     String delete(String KH);
+    
+    String update(KhachHang Kh);
 }

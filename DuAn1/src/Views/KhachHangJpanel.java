@@ -27,6 +27,9 @@ public class KhachHangJpanel extends javax.swing.JPanel {
 
 
         loadTable();
+         txtNgaySinh.getSettings().setAllowKeyboardEditing(false); 
+         txtNgayTao.getSettings().setAllowKeyboardEditing(false); 
+         txtNgayHetHan.getSettings().setAllowKeyboardEditing(false); 
 
         
     }
@@ -218,6 +221,11 @@ public class KhachHangJpanel extends javax.swing.JPanel {
         });
 
         btnSua.setText("Sửa");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -517,6 +525,16 @@ public class KhachHangJpanel extends javax.swing.JPanel {
     private void tblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhachHangMouseClicked
        loadTextField();
     }//GEN-LAST:event_tblKhachHangMouseClicked
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        if(!KHser.checkMa(txtMA.getText().trim())){
+                JOptionPane.showMessageDialog(this, "Mã tai khoan không tồn tại");
+            }else{
+                JOptionPane.showMessageDialog(this, KHser.update(getInsert()));
+                loadTable();
+            }
+    }//GEN-LAST:event_btnSuaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
