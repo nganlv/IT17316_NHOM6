@@ -6,6 +6,7 @@ package Views;
 
 import Services.impl.KhachHangImpl;
 import ViewModels.KhachHang;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -27,9 +28,13 @@ public class KhachHangJpanel extends javax.swing.JPanel {
 
 
         loadTable();
+        
          txtNgaySinh.getSettings().setAllowKeyboardEditing(false); 
          txtNgayTao.getSettings().setAllowKeyboardEditing(false); 
          txtNgayHetHan.getSettings().setAllowKeyboardEditing(false); 
+         txtNgaySinh.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
+         txtNgayTao.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
+         txtNgayHetHan.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
 
         
     }
