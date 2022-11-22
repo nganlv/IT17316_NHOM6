@@ -55,21 +55,21 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         } else {
 
             String ma = txtseach.getText();
-            model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
-            model.setRowCount(0);
-            List<QuanLyThongKe> dsnv = service.tim(ma);
-            for (QuanLyThongKe kh : dsnv) {
-                Object[] row = new Object[]{
-                    kh.getMaSP(),
-                    kh.getTenSP(),
-                    kh.getNgay(),
-                    kh.getSoLuong(),
-                    kh.getDongia(),
-                    kh.getThanhTien(),};
-                model.addRow(row);
-            }
-            tbbang.setModel(model);
-            return dsnv;
+              model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Ngày TT", "Số Lượng", "Đơn Gía","Thành Tiền"});
+        model.setRowCount(0);
+        List<QuanLyThongKe> dsnv = service.tim(ma);
+        for (QuanLyThongKe kh : dsnv) {
+            Object[] row = new Object[]{
+                kh.getMaSP(),
+                kh.getTenSP(),
+                kh.getNgay(),
+                kh.getSoLuong(),
+                kh.getDongia(),
+                kh.getThanhTien(),};
+            model.addRow(row);
+        }
+        tbbang.setModel(model);
+        return dsnv;
         }
     }
 
