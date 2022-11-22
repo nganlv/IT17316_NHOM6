@@ -83,8 +83,8 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbbang = new javax.swing.JTable();
         btnseach = new javax.swing.JButton();
-        btnlammoi = new javax.swing.JTextField();
         txtseach = new javax.swing.JTextField();
+        btnload = new javax.swing.JButton();
 
         jLabel2.setText("Seach");
 
@@ -111,10 +111,10 @@ public class ThongKeJpanel extends javax.swing.JPanel {
             }
         });
 
-        btnlammoi.setText("Load");
-        btnlammoi.addActionListener(new java.awt.event.ActionListener() {
+        btnload.setText("Load");
+        btnload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnlammoiActionPerformed(evt);
+                btnloadActionPerformed(evt);
             }
         });
 
@@ -139,12 +139,12 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnlammoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnload)
+                .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,9 +158,9 @@ public class ThongKeJpanel extends javax.swing.JPanel {
                     .addComponent(txtseach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnlammoi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnload)
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -179,13 +179,13 @@ public class ThongKeJpanel extends javax.swing.JPanel {
         tim();  // TODO add your handling code here:
     }//GEN-LAST:event_btnseachActionPerformed
 
-    private void btnlammoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlammoiActionPerformed
-       layds(); // TODO add your handling code here:
-    }//GEN-LAST:event_btnlammoiActionPerformed
+    private void btnloadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloadActionPerformed
+layds();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnloadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField btnlammoi;
+    private javax.swing.JButton btnload;
     private javax.swing.JButton btnseach;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
