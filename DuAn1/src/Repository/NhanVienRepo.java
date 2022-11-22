@@ -166,16 +166,16 @@ public class NhanVienRepo {
         return null;
     }
     
-    public List<NhanVien> getTimTen(String ten) {
+     public List<NhanVien> getloc(String cv) {
         List<NhanVien> listTNV = new ArrayList<>();
         String sql = """
                      select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
                                             from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id
                                             				join ChucVu on NhanVien.IdCV = ChucVu.Id 
-                                          where NhanVien.HoTen= ?  """;
+                                          where ChucVu.Ten = ?  """;
 
         try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
-            ps.setString(2, ten);
+            ps.setString(1, cv);
        
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -191,6 +191,44 @@ public class NhanVienRepo {
                 nv.setIdcv(rs.getString("ChucVu"));
                 nv.setTrangthai(rs.getInt("TrangThai"));
                 listTNV.add(nv);
+
+            }
+
+            return listTNV;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    
+    public List<NhanVien> getTimTen(String ten) {
+        List<NhanVien> listTNV = new ArrayList<>();
+        String sql = """
+                     select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
+                                            from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id
+                                            				join ChucVu on NhanVien.IdCV = ChucVu.Id 
+                                          where NhanVien.HoTen like '%"+ten+"%'  """;
+
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
+          
+           
+       
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                NhanVien tnv = new NhanVien();
+                tnv.setMa(rs.getString("Ma"));
+                tnv.setTen(rs.getString("HoTen"));
+                tnv.setGioitinh(rs.getString("GioiTinh"));
+                tnv.setNgaysinh(rs.getDate("NgaySinh"));
+                tnv.setSdt(rs.getString("Sdt"));
+                tnv.setDiachi(rs.getString("DiaChi"));
+                tnv.setEmail(rs.getString("Email"));
+                tnv.setIdtk(rs.getString("TaiKhoan"));
+                tnv.setIdcv(rs.getString("ChucVu"));
+                tnv.setTrangthai(rs.getInt("TrangThai"));
+                listTNV.add(tnv);
 
             }
 
