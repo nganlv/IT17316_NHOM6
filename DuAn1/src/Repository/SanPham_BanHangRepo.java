@@ -24,9 +24,10 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
         try {
             List<SanPham_BanHang> listSp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia,"
-                    + " FORMAT(GiamGia,'c','vi-VN') as GiamGia, MauSac, ChatLieu, KichThuoc, Loai, GioiTinh, KieuMay, "
-                    + " SoLuongTon from SanPham join ChiTietSP on SanPham.Id=ChiTietSP.IdSP"
+            String sql = "select SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia, FORMAT(GiamGia,'c','vi-VN') as GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
+                    + "  join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
+                    + "  join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
+                    + "  join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
                     + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -36,10 +37,11 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
                 sp.setTen(rs.getString("Ten"));
                 sp.setDonGia(rs.getString("DonGia"));
                 sp.setGiamGia(rs.getString("GiamGia"));
-                sp.setMauSac(rs.getString("MauSac"));
-                sp.setChatLieu(rs.getString("ChatLieu"));
+                sp.setHinhDangMat(rs.getString("HinhDangMatSo"));
+                sp.setChatLieuMat(rs.getString("ChatLieuMatKinh"));
                 sp.setKichThuoc(rs.getString("KichThuoc"));
-                sp.setLoai(rs.getString("Loai"));
+                sp.setMauVo(rs.getString("MauVo"));
+                sp.setTheLoai(rs.getString("TheLoai"));
                 sp.setGioiTinh(rs.getString("GioiTinh"));
                 sp.setKieuMay(rs.getString("KieuMay"));
                 sp.setSoLuong(rs.getInt("SoLuongTon"));
@@ -60,11 +62,13 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
         try {
             List<SanPham_BanHang> listSp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia,"
-                    + " FORMAT(GiamGia,'c','vi-VN') as GiamGia, MauSac, ChatLieu, KichThuoc, Loai, GioiTinh, KieuMay, "
-                    + " SoLuongTon from SanPham join ChiTietSP on SanPham.Id=ChiTietSP.IdSP"
+            String sql = "select SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia, FORMAT(GiamGia,'c','vi-VN') as GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
+                    + "  join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
+                    + "  join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
+                    + "  join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
                     + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id"
                     + " where SanPham.Ma=?";
+            
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ma);
             ResultSet rs = ps.executeQuery();
@@ -74,10 +78,11 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
                 sp.setTen(rs.getString("Ten"));
                 sp.setDonGia(rs.getString("DonGia"));
                 sp.setGiamGia(rs.getString("GiamGia"));
-                sp.setMauSac(rs.getString("MauSac"));
-                sp.setChatLieu(rs.getString("ChatLieu"));
+                sp.setHinhDangMat(rs.getString("HinhDangMatSo"));
+                sp.setChatLieuMat(rs.getString("ChatLieuMatKinh"));
                 sp.setKichThuoc(rs.getString("KichThuoc"));
-                sp.setLoai(rs.getString("Loai"));
+                sp.setMauVo(rs.getString("MauVo"));
+                sp.setTheLoai(rs.getString("TheLoai"));
                 sp.setGioiTinh(rs.getString("GioiTinh"));
                 sp.setKieuMay(rs.getString("KieuMay"));
                 sp.setSoLuong(rs.getInt("SoLuongTon"));
