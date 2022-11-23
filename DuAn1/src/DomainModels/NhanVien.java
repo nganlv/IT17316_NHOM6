@@ -6,10 +6,7 @@ package DomainModels;
 
 import java.util.Date;
 
-/**
- *
- * @author nguye
- */
+
 public class NhanVien {
    private String id;
    private String ma;
@@ -130,6 +127,8 @@ public class NhanVien {
         this.trangthai = trangthai;
     }
 
+
  
    
+
 }

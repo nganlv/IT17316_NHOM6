@@ -13,5 +13,7 @@ import java.util.List;
  */
 public interface IHoaDonChoRepo {
     public List<HoaDonCho> getHd();
+
     public List<HoaDonCho> getHd2(String ma);
+
 }

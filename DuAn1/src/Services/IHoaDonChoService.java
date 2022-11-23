@@ -13,5 +13,5 @@ import java.util.List;
  */
 public interface IHoaDonChoService {
   public List<QlHoaDonCho> getHds();
-  public List<QlHoaDonCho> getHd2s(String ma);
+
 }

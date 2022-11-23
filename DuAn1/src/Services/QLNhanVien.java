@@ -13,6 +13,7 @@ import java.util.List;
  * @author nguye
  */
 public interface QLNhanVien {
+
     List<QuanLyNhanVien> getAll();
      String add(NhanVien nv);
      String update(NhanVien nv);
@@ -20,4 +21,5 @@ public interface QLNhanVien {
        Boolean checkMa(String maNV);
        List<QuanLyNhanVien> getTims(String ma);
        List<QuanLyNhanVien> getTimTens(String ten);
+
 }
