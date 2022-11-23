@@ -86,12 +86,12 @@ public class INhanVien implements QLNhanVien{
         }
         return null;
     }
-    
+  
  @Override
     public List<QuanLyNhanVien> getTimTens(String ten) {
         try {
             List<QuanLyNhanVien> listKh = new ArrayList<>();
-            for (NhanVien kh : nvRepo.getTim(ten)) {
+            for (NhanVien kh : nvRepo.getTimTen(ten)) {
                 listKh.add(new QuanLyNhanVien(kh.getMa(), kh.getTen(), kh.getGioitinh(), kh.getNgaysinh(),
                         kh.getSdt(), kh.getDiachi(),kh.getEmail(),kh.getIdtk(),kh.getIdcv(),kh.getTrangthai()));
             }
@@ -102,5 +102,23 @@ public class INhanVien implements QLNhanVien{
         }
         return null;
     }
+
+    @Override
+    public List<QuanLyNhanVien> getLoc(String ten) {
+     
+        try {
+            List<QuanLyNhanVien> listKh = new ArrayList<>();
+            for (NhanVien kh : nvRepo.getloc(ten)) {
+                listKh.add(new QuanLyNhanVien(kh.getMa(), kh.getTen(), kh.getGioitinh(), kh.getNgaysinh(),
+                        kh.getSdt(), kh.getDiachi(),kh.getEmail(),kh.getIdtk(),kh.getIdcv(),kh.getTrangthai()));
+            }
+            return listKh;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return null;
+    }
+    
 
 }

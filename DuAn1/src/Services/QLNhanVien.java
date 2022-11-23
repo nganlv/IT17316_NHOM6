@@ -20,4 +20,5 @@ public interface QLNhanVien {
        Boolean checkMa(String maNV);
        List<QuanLyNhanVien> getTims(String ma);
        List<QuanLyNhanVien> getTimTens(String ten);
+       List<QuanLyNhanVien> getLoc(String ten);
 }
