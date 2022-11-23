@@ -16,13 +16,16 @@ import ViewModels.QlHoaDonCho;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author levan
  */
 public class BanHangJpanel extends javax.swing.JPanel {
-private final ISanPham_BanHangService iSanPhamService=new SanPham_BanHangService();
-private  final IHoaDonChoService iHoaDonChoService=new HoaDonChoService();
+
+    private final ISanPham_BanHangService iSanPhamService = new SanPham_BanHangService();
+    private final IHoaDonChoService iHoaDonChoService = new HoaDonChoService();
+
     /**
      * Creates new form BanHang
      */
@@ -34,6 +37,7 @@ private  final IHoaDonChoService iHoaDonChoService=new HoaDonChoService();
         loadComboboxGH();
         loadComboboxTT();
     }
+
     public void Clock() {
         new Thread() {
             @Override
@@ -43,7 +47,7 @@ private  final IHoaDonChoService iHoaDonChoService=new HoaDonChoService();
                     sdf.applyPattern("hh:mm:ss aa");
                     Date date = new Date();
                     jlbClock.setText(sdf.format(date));
-            try {
+                    try {
                         Thread.sleep(1000);
                     } catch (Exception e) {
                     }
@@ -51,44 +55,50 @@ private  final IHoaDonChoService iHoaDonChoService=new HoaDonChoService();
             }
         }.start();
     }
-    private void loadTableSp(){
-    DefaultTableModel model=new DefaultTableModel();
-    model.setColumnIdentifiers(new String[]{"Mã","Tên","Đơn giá","Giảm giá","Màu sắc","Chất liệu","Kích thước","Loại","Giới tính","Kiểu máy","Số lượng tồn"});
-    List<QLSanPham_BanHang> listSp=iSanPhamService.getAllSps();
-    if(listSp==null){
-        JOptionPane.showMessageDialog(this, "Rỗng");
+
+    private void loadTableSp() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Đơn giá", "Giảm giá", "Hình dạng mặt số", "Chất liệu mặt kính", "Kích thước", "Màu vỏ", "Thể loại", "Giới tính", "Kiểu máy", "Số lượng tồn"});
+        List<QLSanPham_BanHang> listSp = iSanPhamService.getAllSps();
+        if (listSp == null) {
+            JOptionPane.showMessageDialog(this, "Rỗng");
+        }
+        for (QLSanPham_BanHang sp : listSp) {
+            model.addRow(new Object[]{sp.getMa(), sp.getTen(), sp.getDonGia(), sp.getGiamGia(), sp.getHinhDangMat(),
+                sp.getChatLieuMat(), sp.getKichThuoc(), sp.getMauVo(), sp.getTheLoai(), sp.getGioiTinh(), sp.getKieuMay(), sp.getSoLuong()});
+        }
+        tblSanPham.setModel(model);
     }
-    for(QLSanPham_BanHang sp:listSp){
-        model.addRow(new Object[]{sp.getMa(), sp.getTen(), sp.getDonGia(),sp.getGiamGia(),sp.getMauSac(), 
-                        sp.getChatLieu(), sp.getKichThuoc(), sp.getLoai(),sp.getGioiTinh(),sp.getKieuMay(), sp.getSoLuong()});
+
+    private void loadTableHdc1() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã hóa đơn", "Ngày tạo", "Nhân viên tạo", "Tên Khách hàng"});
+        List<QlHoaDonCho> listhdc = iHoaDonChoService.getHds();
+        if (listhdc == null) {
+            JOptionPane.showMessageDialog(this, "Rỗng");
+        }
+        for (QlHoaDonCho hdc : listhdc) {
+            model.addRow(new Object[]{hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(), hdc.getTenKh()});
+        }
+        tblHoaDonCho.setModel(model);
     }
-    tblSanPham.setModel(model);
-}
-    private void loadTableHdc1(){
-    DefaultTableModel model=new DefaultTableModel();
-    model.setColumnIdentifiers(new String[]{"Mã hóa đơn","Ngày tạo","Nhân viên tạo","Tên Khách hàng"});
-    List<QlHoaDonCho> listhdc=iHoaDonChoService.getHds();
-    if(listhdc==null){
-        JOptionPane.showMessageDialog(this, "Rỗng");
+
+    private void loadTableGioHang() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã sản phẩm", "Tên sản phẩm", "Đơn giá", "Số lượng"});
+        tblGioHang.setModel(model);
     }
-    for(QlHoaDonCho hdc: listhdc){
-        model.addRow(new Object[]{hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(), hdc.getTenKh()});                     
-    }
-    tblHoaDonCho.setModel(model);
-}
-    private void loadTableGioHang(){
-    DefaultTableModel model=new DefaultTableModel();
-    model.setColumnIdentifiers(new String[]{"Mã sản phẩm","Tên sản phẩm","Đơn giá","Số lượng"});
-    tblGioHang.setModel(model);
-}
-    private void loadComboboxTT(){
-        String[] thanhToan={"Tiền mặt","Chuyển khoản","Quẹt thẻ"};
+
+    private void loadComboboxTT() {
+        String[] thanhToan = {"Tiền mặt", "Chuyển khoản", "Quẹt thẻ"};
         cboHinhThucTT.setModel(new DefaultComboBoxModel<>(thanhToan));
     }
-     private void loadComboboxGH(){
-        String[] giaoHang={"Bán trực tiếp","Ship code"};
+
+    private void loadComboboxGH() {
+        String[] giaoHang = {"Bán trực tiếp", "Ship code"};
         cboHinhThucGiaoHang.setModel(new DefaultComboBoxModel<>(giaoHang));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -636,12 +646,12 @@ private  final IHoaDonChoService iHoaDonChoService=new HoaDonChoService();
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-private void fillHoaDonCho1(int index){ 
-    List<QlHoaDonCho> listhdc=iHoaDonChoService.getHds();
-    jlbMaHd.setText(listhdc.get(index).getMaHd());
-}
+private void fillHoaDonCho1(int index) {
+        List<QlHoaDonCho> listhdc = iHoaDonChoService.getHds();
+        jlbMaHd.setText(listhdc.get(index).getMaHd());
+    }
     private void btnThemSpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSpActionPerformed
-        String soLuong= JOptionPane.showInputDialog(null,"Mời bạn nhập số lượng sản phẩm","Hệ thống quản lý bán hàng",JOptionPane.INFORMATION_MESSAGE);
+        String soLuong = JOptionPane.showInputDialog(null, "Mời bạn nhập số lượng sản phẩm", "Hệ thống quản lý bán hàng", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnThemSpActionPerformed
 
     private void btnTaoHdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHdActionPerformed
@@ -649,7 +659,7 @@ private void fillHoaDonCho1(int index){
     }//GEN-LAST:event_btnTaoHdActionPerformed
 
     private void tblHoaDonChoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonChoMouseClicked
-        int index=tblHoaDonCho.getSelectedRow();
+        int index = tblHoaDonCho.getSelectedRow();
         btnChonKh.setEnabled(true);
         btnThayDoiKh.setEnabled(true);
         btnTaoHd.setEnabled(false);
@@ -665,15 +675,15 @@ private void fillHoaDonCho1(int index){
     }//GEN-LAST:event_btnAllSpActionPerformed
 
     private void btnTimSpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimSpActionPerformed
-        DefaultTableModel model=new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Mã","Tên","Đơn giá","Giảm giá","Màu sắc","Chất liệu","Kích thước","Loại","Giới tính","Kiểu máy","Số lượng tồn"});
-        List<QLSanPham_BanHang> timSp=iSanPhamService.timSpTheoMas(txtTimSp.getText());
-        if(timSp==null){
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Đơn giá", "Giảm giá", "Hình dạng mặt số", "Chất liệu mặt kính", "Kích thước", "Màu vỏ", "Thể loại", "Giới tính", "Kiểu máy", "Số lượng tồn"});
+        List<QLSanPham_BanHang> listSp = iSanPhamService.timSpTheoMas(txtTimSp.getText());
+        if (listSp == null) {
             JOptionPane.showMessageDialog(this, "Sản phẩm không tồn tại");
         }
-        for(QLSanPham_BanHang sp:timSp){
-            model.addRow(new Object[]{sp.getMa(), sp.getTen(), sp.getDonGia(),sp.getGiamGia(),sp.getMauSac(),
-                sp.getChatLieu(), sp.getKichThuoc(), sp.getLoai(),sp.getGioiTinh(),sp.getKieuMay(), sp.getSoLuong()});
+        for (QLSanPham_BanHang sp : listSp) {
+            model.addRow(new Object[]{sp.getMa(), sp.getTen(), sp.getDonGia(), sp.getGiamGia(), sp.getHinhDangMat(),
+                sp.getChatLieuMat(), sp.getKichThuoc(), sp.getMauVo(), sp.getTheLoai(), sp.getGioiTinh(), sp.getKieuMay(), sp.getSoLuong()});
         }
         tblSanPham.setModel(model);
     }//GEN-LAST:event_btnTimSpActionPerformed
