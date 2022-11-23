@@ -8,8 +8,10 @@ import DomainModels.NhanVien;
 import Repository.NhanVienRepo;
 import Services.QLNhanVien;
 import ViewModels.QuanLyNhanVien;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,6 +29,7 @@ public class INhanVien implements QLNhanVien{
     public List<QuanLyNhanVien> getAll() {
         return nvRepo.getAllNV();
     }
+
     @Override
     public String add(NhanVien nv) {
        try {
@@ -103,22 +106,6 @@ public class INhanVien implements QLNhanVien{
         return null;
     }
 
-    @Override
-    public List<QuanLyNhanVien> getLoc(String ten) {
-     
-        try {
-            List<QuanLyNhanVien> listKh = new ArrayList<>();
-            for (NhanVien kh : nvRepo.getloc(ten)) {
-                listKh.add(new QuanLyNhanVien(kh.getMa(), kh.getTen(), kh.getGioitinh(), kh.getNgaysinh(),
-                        kh.getSdt(), kh.getDiachi(),kh.getEmail(),kh.getIdtk(),kh.getIdcv(),kh.getTrangthai()));
-            }
-            return listKh;
-        } catch (Exception e) {
-            e.printStackTrace();
 
-        }
-        return null;
-    }
-    
 
 }

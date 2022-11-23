@@ -12,22 +12,23 @@ import java.math.BigDecimal;
  */
 public class QLSanPham_BanHang {
     private String ma, ten;
-   private String donGia, giamGia;
-   private String mauSac, chatLieu, kichThuoc, loai, gioiTinh, kieuMay;
-   private int soLuong;
+    private String donGia, giamGia;
+    private String hinhDangMat, chatLieuMat, kichThuoc, mauVo, theLoai, gioiTinh, kieuMay;
+    private int soLuong;
 
     public QLSanPham_BanHang() {
     }
 
-    public QLSanPham_BanHang(String ma, String ten, String donGia, String giamGia, String mauSac, String chatLieu, String kichThuoc, String loai, String gioiTinh, String kieuMay, int soLuong) {
+    public QLSanPham_BanHang(String ma, String ten, String donGia, String giamGia, String hinhDangMat, String chatLieuMat, String kichThuoc, String mauVo, String theLoai, String gioiTinh, String kieuMay, int soLuong) {
         this.ma = ma;
         this.ten = ten;
         this.donGia = donGia;
         this.giamGia = giamGia;
-        this.mauSac = mauSac;
-        this.chatLieu = chatLieu;
+        this.hinhDangMat = hinhDangMat;
+        this.chatLieuMat = chatLieuMat;
         this.kichThuoc = kichThuoc;
-        this.loai = loai;
+        this.mauVo = mauVo;
+        this.theLoai = theLoai;
         this.gioiTinh = gioiTinh;
         this.kieuMay = kieuMay;
         this.soLuong = soLuong;
@@ -65,20 +66,20 @@ public class QLSanPham_BanHang {
         this.giamGia = giamGia;
     }
 
-    public String getMauSac() {
-        return mauSac;
+    public String getHinhDangMat() {
+        return hinhDangMat;
     }
 
-    public void setMauSac(String mauSac) {
-        this.mauSac = mauSac;
+    public void setHinhDangMat(String hinhDangMat) {
+        this.hinhDangMat = hinhDangMat;
     }
 
-    public String getChatLieu() {
-        return chatLieu;
+    public String getChatLieuMat() {
+        return chatLieuMat;
     }
 
-    public void setChatLieu(String chatLieu) {
-        this.chatLieu = chatLieu;
+    public void setChatLieuMat(String chatLieuMat) {
+        this.chatLieuMat = chatLieuMat;
     }
 
     public String getKichThuoc() {
@@ -89,12 +90,20 @@ public class QLSanPham_BanHang {
         this.kichThuoc = kichThuoc;
     }
 
-    public String getLoai() {
-        return loai;
+    public String getMauVo() {
+        return mauVo;
     }
 
-    public void setLoai(String loai) {
-        this.loai = loai;
+    public void setMauVo(String mauVo) {
+        this.mauVo = mauVo;
+    }
+
+    public String getTheLoai() {
+        return theLoai;
+    }
+
+    public void setTheLoai(String theLoai) {
+        this.theLoai = theLoai;
     }
 
     public String getGioiTinh() {
@@ -120,7 +129,6 @@ public class QLSanPham_BanHang {
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
-
     
    
 }

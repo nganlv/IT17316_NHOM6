@@ -23,8 +23,10 @@ public class SanPham_BanHangService implements ISanPham_BanHangService {
         try {
             List<QLSanPham_BanHang> listSp = new ArrayList<>();
             for (SanPham_BanHang sp : iSanPham_BanHangRepo.getAllSp()) {
+
                 listSp.add(new QLSanPham_BanHang(sp.getMa(), sp.getTen(), sp.getDonGia(),sp.getGiamGia(),sp.getMauSac(), 
                         sp.getChatLieu(), sp.getKichThuoc(), sp.getLoai(),sp.getGioiTinh(),sp.getKieuMay(), sp.getSoLuong()));             
+
             }
             return listSp;
         } catch (Exception e) {
@@ -32,12 +34,16 @@ public class SanPham_BanHangService implements ISanPham_BanHangService {
         }
         return null;
     }
+
+
     public List<QLSanPham_BanHang> timSpTheoMas(String ma) {
         try {
             List<QLSanPham_BanHang> listSp = new ArrayList<>();
             for (SanPham_BanHang sp : iSanPham_BanHangRepo.timSpTheoMa(ma)) {
+
                 listSp.add(new QLSanPham_BanHang(sp.getMa(), sp.getTen(), sp.getDonGia(),sp.getGiamGia(),sp.getMauSac(), 
                         sp.getChatLieu(), sp.getKichThuoc(), sp.getLoai(),sp.getGioiTinh(),sp.getKieuMay(), sp.getSoLuong()));             
+
             }
             return listSp;
         } catch (Exception e) {

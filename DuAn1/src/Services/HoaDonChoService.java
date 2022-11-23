@@ -30,4 +30,18 @@ public class HoaDonChoService implements IHoaDonChoService{
         }
         return null;
     }
+    @Override
+    public List<QlHoaDonCho> getHd2s(String ma){
+        try {
+            List<QlHoaDonCho> listQlHd=new ArrayList<>();
+            for(HoaDonCho hdc: iHoaDonChoRepo.getHd2(ma)){
+                listQlHd.add(new QlHoaDonCho(hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(), hdc.getTenKh()));
+            }
+            return listQlHd;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
