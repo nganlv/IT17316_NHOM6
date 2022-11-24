@@ -171,7 +171,8 @@ public class ThongKeForm extends javax.swing.JFrame {
     }
 
     public List<QuanLyThongKe> tim() {
-        if (txtseach.getText().isEmpty()) {
+        try {
+              if (txtseach.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "vui lòng nhập mã để tìm");
             return null;
 
@@ -193,6 +194,10 @@ public class ThongKeForm extends javax.swing.JFrame {
         }
         tbbang.setModel(model);
         return dsnv;
+        }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"k Thay sp can tim");
+            return null;
         }
     }
 

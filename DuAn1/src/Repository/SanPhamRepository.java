@@ -20,14 +20,15 @@ public class SanPhamRepository {
 
     public ArrayList<QuanLySanPham> getAll() throws SQLException {
         ArrayList<QuanLySanPham> list = new ArrayList<>();
-        String sql = "SELECT Ma, Ten  from SanPham";
+        String sql = "SELECT Id, Ma, Ten  from SanPham";
         Connection connection = dBcontext.getConnection();
         PreparedStatement ps = connection.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             QuanLySanPham sp = new QuanLySanPham();
             sp.setMaSP(rs.getString(1));
-            sp.setTenSP(rs.getString(2));
+            sp.setMaSP(rs.getString(2));
+            sp.setTenSP(rs.getString(3));
 
             list.add(sp);
         }
@@ -35,12 +36,12 @@ public class SanPhamRepository {
     }
 
     public boolean addSP(QuanLySanPham sp) throws SQLException {
-        String sql = "insert into SanPham(Ma, Ten) VALUES(?, ?)";
+        String sql = "insert into SanPham(Id,Ma, Ten) VALUES(newid(),?, ?)";
         Connection connection = dBcontext.getConnection();
         PreparedStatement ps = connection.prepareStatement(sql);
-
-        ps.setString(1, sp.getMaSP());
-        ps.setString(2, sp.getTenSP());
+        ps.setString(1, sp.getId());
+        ps.setString(2, sp.getMaSP());
+        ps.setString(3, sp.getTenSP());
         
         return ps.executeUpdate()>0;
     }
