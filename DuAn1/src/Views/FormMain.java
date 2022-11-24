@@ -94,7 +94,7 @@ private void chuChay() {
         jlbDongHo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbDongHo.setForeground(new java.awt.Color(0, 153, 153));
         jlbDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbDongHo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-watch-48.png"))); // NOI18N
+        jlbDongHo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\icons8-watch-48.png")); // NOI18N
         jlbDongHo.setText("QUẢN LÝ BÁN ĐỒNG HỒ  ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -102,7 +102,7 @@ private void chuChay() {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jlbDongHo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlbDongHo, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -134,7 +134,7 @@ private void chuChay() {
             jpnBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnBanHangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(jlbBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -159,7 +159,7 @@ private void chuChay() {
             jpnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnSanPhamLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(jlbSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -209,7 +209,7 @@ private void chuChay() {
             jpnKhachHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnKhachHangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(jlbKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -234,7 +234,7 @@ private void chuChay() {
             jpnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnNhanVienLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(jlbNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -260,7 +260,7 @@ private void chuChay() {
             .addGroup(jpnKhuyenMaiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlbKhuyenMai)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         jpnThongKe.setBackground(new java.awt.Color(255, 102, 51));
@@ -284,7 +284,7 @@ private void chuChay() {
             jpnThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnThongKeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlbThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                .addComponent(jlbThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
