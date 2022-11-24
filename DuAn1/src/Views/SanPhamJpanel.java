@@ -48,6 +48,7 @@ private void loadTableCtsp(){
 }
 private void loadCombobox(){
     String[] thuongHieu={"CASIO","CALVIN KLEIN","CITIZEN","SEIKO","CANDIO","G-SHOCK","FOSSIL"};
+    String[] thuongHieu2={"CASIO","CALVIN KLEIN","CITIZEN","SEIKO","CANDIO","G-SHOCK","FOSSIL"};
     String[] xuatXu={"Nhật bản","Thụy sĩ","Trung quốc","Mỹ","Anh"};
     String[] theLoai={"Limited Edition","Quân đội","Điện tử","Đính kim cương","Xà cừ","Trẻ em"};
     String[] kieuMay={"Pin","Cơ","Năng lượng ánh sáng"};
@@ -58,6 +59,8 @@ private void loadCombobox(){
     String[] chatLieuDay={"Dây kim loại","Dây nhựa","Dây cao su","Dây vải","Dây titanium","Dây vải"};
     String[] mauMatSo={"Trắng","Đen","Vàng","Xanh","Xám","Hồng","Nâu"};
     String[] mauVo={"Vàng","Trắng","Đen","Vàng hồng"};
+    String[] gioiTinh={"Nam","Nữ"};
+    String[] tinhTrang={"Còn kinh doanh","Ngừng kinh doanh"};
     cboThuongHieu.setModel(new DefaultComboBoxModel<>(thuongHieu));
     cboXuatXu.setModel(new DefaultComboBoxModel<>(xuatXu));
     cboTheLoai.setModel(new DefaultComboBoxModel<>(theLoai));
@@ -69,6 +72,9 @@ private void loadCombobox(){
     cboChatLieuDay.setModel(new DefaultComboBoxModel<>(chatLieuDay));
     cboMauMatSo.setModel(new DefaultComboBoxModel<>(mauMatSo));
     cboMauVo.setModel(new DefaultComboBoxModel<>(mauVo));
+    cboThuongHieu2.setModel(new DefaultComboBoxModel<>(thuongHieu2));
+    cboGioiTinh.setModel(new DefaultComboBoxModel<>(gioiTinh));
+    cboTinhTrang.setModel(new DefaultComboBoxModel<>(tinhTrang));
 }
         
     /**
