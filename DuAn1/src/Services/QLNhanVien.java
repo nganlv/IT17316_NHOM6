@@ -22,4 +22,3 @@ public interface QLNhanVien {
        List<QuanLyNhanVien> getTims(String ma);
        List<QuanLyNhanVien> getTimTens(String ten);
 
-}

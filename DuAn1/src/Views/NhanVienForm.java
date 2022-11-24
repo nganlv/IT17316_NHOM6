@@ -23,7 +23,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -33,6 +35,8 @@ public class NhanVienForm extends javax.swing.JFrame {
 private final QLNhanVien nvService=new INhanVien();
 private final QLTaiKhoan tkService=new ITaiKhoan();
 private final QlChucVu cvService=new ChucVuServiceImpl();
+DefaultTableModel model = new DefaultTableModel();
+  private TableRowSorter<DefaultTableModel> sorter;
     /**
      * Creates new form NhanVienForm
      */
@@ -83,6 +87,7 @@ public void loadComboBox(){
         cbCV.removeAllItems();
         for (ChucVu cv : listCV) {
             cbCV.addItem(cv);
+            cbLoc.addItem(cv);
         }
 }
  public NhanVien getData(){
@@ -186,6 +191,43 @@ public void loadComboBox(){
         }
       return true;
  }
+ public List<QuanLyNhanVien> tim() {
+        if (txtSearch.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "vui lòng nhập mã để tìm");
+            return null;
+
+        } else {
+//            RowFilter<DefaultTableModel,Object> rf=RowFilter.regexFilter(cbLoc.getSelectedItem().toString(),0);
+//             sorter.setRowFilter(rf);
+            String ten = txtSearch.getText();
+            model.setColumnIdentifiers(new String[]{"Mã nhân viên", "Tên",  "Giới tính", "Ngày sinh","SDT", "Địa chỉ",  "Email", "TaiKhoan", "Chức vụ", "Trạng thái"});
+            model.setRowCount(0);
+            List<QuanLyNhanVien> dsnv = nvService.getTimTens(ten);
+            for (QuanLyNhanVien kh : dsnv) {
+                String trangThai;
+        if(kh.getTrangthai()==1){
+            trangThai="dang lam";
+        }else{
+            trangThai="Da nghi viec";
+        }
+                Object[] row = new Object[]{
+                    kh.getMa(),
+                    kh.getTen(),
+                    kh.getGioitinh(),
+                    kh.getNgaysinh(),
+                    kh.getSdt(),
+                    kh.getDiachi(),
+                kh.getEmail(),
+                kh.getTaikhoan(),
+                kh.getChucvu(),
+                trangThai};
+                model.addRow(row);
+            }
+            tblNhanVien.setModel(model);
+       
+            return dsnv;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -199,6 +241,7 @@ public void loadComboBox(){
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         buttonGroup4 = new javax.swing.ButtonGroup();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -228,6 +271,12 @@ public void loadComboBox(){
         btnSua = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        txtSearch = new javax.swing.JTextField();
+        btnTim = new javax.swing.JButton();
+        cbLoc = new javax.swing.JComboBox<>();
+        btnLoc = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -312,6 +361,22 @@ public void loadComboBox(){
 
         jButton4.setText("LAM MOI");
 
+        btnTim.setText("tim");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
+
+        cbLoc.setModel(new javax.swing.DefaultComboBoxModel<ChucVu>());
+
+        btnLoc.setText("loc");
+        btnLoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLocActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -365,7 +430,15 @@ public void loadComboBox(){
                             .addComponent(btnThem)
                             .addComponent(btnXoa)
                             .addComponent(btnSua)
-                            .addComponent(jButton4))
+                            .addComponent(jButton4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnTim))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cbLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLoc)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(312, 312, 312)
@@ -419,6 +492,14 @@ public void loadComboBox(){
                 .addComponent(btnXoa)
                 .addGap(30, 30, 30)
                 .addComponent(jButton4)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTim))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoc))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -454,6 +535,17 @@ loadTextField();
         JOptionPane.showMessageDialog(this, nvService.delete(txtMa.getText().trim()));
                 LoadTable();
     }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
+        // TODO add your handling code here:
+        tim();
+       
+    }//GEN-LAST:event_btnTimActionPerformed
+
+    private void btnLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocActionPerformed
+        // TODO add your handling code here:
+         tim();
+    }//GEN-LAST:event_btnLocActionPerformed
 
     /**
      * @param args the command line arguments
@@ -491,16 +583,20 @@ loadTextField();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLoc;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnTim;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JComboBox<ChucVu> cbCV;
+    private javax.swing.JComboBox<ChucVu> cbLoc;
     private javax.swing.JComboBox<TaiKhoan> cbTK;
     private com.github.lgooddatepicker.components.DatePicker dpTime;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -523,6 +619,7 @@ loadTextField();
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextField txtSdt;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }

@@ -172,7 +172,7 @@ public class NhanVienRepo {
                      select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
                                             from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id
                                             				join ChucVu on NhanVien.IdCV = ChucVu.Id 
-                                          where ChucVu.Ten = ?  """;
+                                          where ChucVu.Ten like '%"+cv+"%'  """;
 
         try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(1, cv);
@@ -205,15 +205,11 @@ public class NhanVienRepo {
     
     public List<NhanVien> getTimTen(String ten) {
         List<NhanVien> listTNV = new ArrayList<>();
-        String sql = """
-                     select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
-                                            from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id
-                                            				join ChucVu on NhanVien.IdCV = ChucVu.Id 
-                                          where NhanVien.HoTen like '%"+ten+"%'  """;
+        String sql ="select *from NhanVien where NhanVien.HoTen like '%"+ten+"%'";
 
         try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
           
-           
+//           ps.setString(1, ten);
        
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
