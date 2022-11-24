@@ -30,7 +30,6 @@ public class HoaDonChoService implements IHoaDonChoService{
         }
         return null;
     }
-    @Override
     public List<QlHoaDonCho> getHd2s(String ma){
         try {
             List<QlHoaDonCho> listQlHd=new ArrayList<>();
