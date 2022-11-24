@@ -66,13 +66,7 @@ public class ThongKeRepo {
             List<ThongKe> listKh = new ArrayList<>();
             Connection conn = DBContext.getConnection();
 
-            String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.SoLuong, HoaDonChiTiet.DonGia,\n"
-                    + "HoaDonChiTiet.SoLuong * HoaDonChiTiet.DonGia'Thành Tiền'\n"
-                    + "FROM     SanPham INNER JOIN\n"
-                    + "                  HoaDon ON SanPham.Id = HoaDon.Id INNER JOIN\n"
-                    + "                  HoaDonChiTiet ON HoaDon.Id = HoaDonChiTiet.IdHoaDon"
-                    + " where Ma = ? ";
-
+            
 
             
             String sql = "SELECT SanPham.Ma, SanPham.Ten, HoaDon.NgayThanhToan, HoaDonChiTiet.DonGia, HoaDonChiTiet.SoLuong,  HoaDonChiTiet.DonGia * HoaDonChiTiet.SoLuong as 'Tong'\n"

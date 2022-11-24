@@ -6,8 +6,7 @@ package Views;
 
 import Services.ChiTietSanPhamService;
 import Services.IChiTietSanPhamService;
-import Services.IsanPham;
-import Services.impl.SanPhamSevice;
+
 import ViewModels.QlChiTietSanPham;
 
 import java.util.List;

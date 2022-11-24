@@ -4,6 +4,8 @@
  */
 package ViewModels;
 
+import java.util.Date;
+
 
 
 /**
@@ -13,12 +15,12 @@ package ViewModels;
 public class KhachHang {
     
     private String maKH, hoTen, gioiTinh, sdt, diaChi, email, diem;
-    private String ngaysinh, ngayTao, ngayHetHan;
+    private Date ngaysinh, ngayTao, ngayHetHan;
 
     public KhachHang() {
     }
 
-    public KhachHang(String maKH, String hoTen, String gioiTinh, String sdt, String diaChi, String email, String diem, String ngaysinh, String ngayTao, String ngayHetHan) {
+    public KhachHang(String maKH, String hoTen, String gioiTinh, String sdt, String diaChi, String email, String diem, Date ngaysinh, Date ngayTao, Date ngayHetHan) {
         this.maKH = maKH;
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
@@ -87,29 +89,31 @@ public class KhachHang {
         this.diem = diem;
     }
 
-    public String getNgaysinh() {
+    public Date getNgaysinh() {
         return ngaysinh;
     }
 
-    public void setNgaysinh(String ngaysinh) {
+    public void setNgaysinh(Date ngaysinh) {
         this.ngaysinh = ngaysinh;
     }
 
-    public String getNgayTao() {
+    public Date getNgayTao() {
         return ngayTao;
     }
 
-    public void setNgayTao(String ngayTao) {
+    public void setNgayTao(Date ngayTao) {
         this.ngayTao = ngayTao;
     }
 
-    public String getNgayHetHan() {
+    public Date getNgayHetHan() {
         return ngayHetHan;
     }
 
-    public void setNgayHetHan(String ngayHetHan) {
+    public void setNgayHetHan(Date ngayHetHan) {
         this.ngayHetHan = ngayHetHan;
     }
+
+    
 
     @Override
     public String toString() {
