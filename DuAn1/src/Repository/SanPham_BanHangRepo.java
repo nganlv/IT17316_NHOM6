@@ -62,7 +62,7 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
         try {
             List<SanPham_BanHang> listSp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select  top(1) SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia, FORMAT(GiamGia,'c','vi-VN') as GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
+            String sql = "select  SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia, FORMAT(GiamGia,'c','vi-VN') as GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
                     + "  join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
                     + "  join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
                     + "  join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
