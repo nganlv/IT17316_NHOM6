@@ -102,15 +102,15 @@ private void loadCombobox(){
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnThuongHieu = new javax.swing.JButton();
+        btnXuatXu = new javax.swing.JButton();
+        btnTheLoai = new javax.swing.JButton();
+        btnPhuKien = new javax.swing.JButton();
+        btnTinhNang = new javax.swing.JButton();
+        btnMauMatSo = new javax.swing.JButton();
+        btnMauVo = new javax.swing.JButton();
+        btnChatLieuDay = new javax.swing.JButton();
+        btnSanPham = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -194,32 +194,62 @@ private void loadCombobox(){
 
         jLabel32.setText("Sản phẩm");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 102));
-        jButton1.setText("Update");
+        btnThuongHieu.setBackground(new java.awt.Color(255, 255, 102));
+        btnThuongHieu.setText("Update");
+        btnThuongHieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThuongHieuActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 102));
-        jButton2.setText("Update");
+        btnXuatXu.setBackground(new java.awt.Color(255, 255, 102));
+        btnXuatXu.setText("Update");
+        btnXuatXu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatXuActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 102));
-        jButton3.setText("Update");
+        btnTheLoai.setBackground(new java.awt.Color(255, 255, 102));
+        btnTheLoai.setText("Update");
+        btnTheLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTheLoaiActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 102));
-        jButton4.setText("Update");
+        btnPhuKien.setBackground(new java.awt.Color(255, 255, 102));
+        btnPhuKien.setText("Update");
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 102));
-        jButton5.setText("Update");
+        btnTinhNang.setBackground(new java.awt.Color(255, 255, 102));
+        btnTinhNang.setText("Update");
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 102));
-        jButton6.setText("Update");
+        btnMauMatSo.setBackground(new java.awt.Color(255, 255, 102));
+        btnMauMatSo.setText("Update");
+        btnMauMatSo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMauMatSoActionPerformed(evt);
+            }
+        });
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 102));
-        jButton7.setText("Update");
+        btnMauVo.setBackground(new java.awt.Color(255, 255, 102));
+        btnMauVo.setText("Update");
+        btnMauVo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMauVoActionPerformed(evt);
+            }
+        });
 
-        jButton8.setBackground(new java.awt.Color(255, 255, 102));
-        jButton8.setText("Update");
+        btnChatLieuDay.setBackground(new java.awt.Color(255, 255, 102));
+        btnChatLieuDay.setText("Update");
+        btnChatLieuDay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChatLieuDayActionPerformed(evt);
+            }
+        });
 
-        jButton9.setBackground(new java.awt.Color(255, 255, 102));
-        jButton9.setText("Update");
+        btnSanPham.setBackground(new java.awt.Color(255, 255, 102));
+        btnSanPham.setText("Update");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -236,10 +266,10 @@ private void loadCombobox(){
                             .addComponent(jLabel27))
                         .addGap(41, 41, 41)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))
+                            .addComponent(btnPhuKien)
+                            .addComponent(btnTheLoai)
+                            .addComponent(btnXuatXu)
+                            .addComponent(btnThuongHieu))
                         .addGap(121, 121, 121)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel28)
@@ -248,15 +278,15 @@ private void loadCombobox(){
                             .addComponent(jLabel31))
                         .addGap(22, 22, 22)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton8)
-                            .addComponent(jButton7)
-                            .addComponent(jButton6)
-                            .addComponent(jButton5)))
+                            .addComponent(btnChatLieuDay)
+                            .addComponent(btnMauVo)
+                            .addComponent(btnMauMatSo)
+                            .addComponent(btnTinhNang)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(164, 164, 164)
                         .addComponent(jLabel32)
                         .addGap(42, 42, 42)
-                        .addComponent(jButton9)))
+                        .addComponent(btnSanPham)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -265,31 +295,31 @@ private void loadCombobox(){
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jButton1)
+                    .addComponent(btnThuongHieu)
                     .addComponent(jLabel28)
-                    .addComponent(jButton5))
+                    .addComponent(btnTinhNang))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(jButton2)
+                    .addComponent(btnXuatXu)
                     .addComponent(jLabel29)
-                    .addComponent(jButton6))
+                    .addComponent(btnMauMatSo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(jButton3)
+                    .addComponent(btnTheLoai)
                     .addComponent(jLabel30)
-                    .addComponent(jButton7))
+                    .addComponent(btnMauVo))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(jButton4)
+                    .addComponent(btnPhuKien)
                     .addComponent(jLabel31)
-                    .addComponent(jButton8))
+                    .addComponent(btnChatLieuDay))
                 .addGap(59, 59, 59)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel32)
-                    .addComponent(jButton9))
+                    .addComponent(btnSanPham))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
@@ -713,15 +743,48 @@ private void loadCombobox(){
         loadTableCtsp();
     }//GEN-LAST:event_btnLoadActionPerformed
 
+    private void btnThuongHieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThuongHieuActionPerformed
+        new QLThuongHieu().setVisible(true);
+    }//GEN-LAST:event_btnThuongHieuActionPerformed
+
+    private void btnXuatXuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatXuActionPerformed
+        new QLXuatXu().setVisible(true);
+    }//GEN-LAST:event_btnXuatXuActionPerformed
+
+    private void btnTheLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTheLoaiActionPerformed
+        new QLTheLoai().setVisible(true);
+    }//GEN-LAST:event_btnTheLoaiActionPerformed
+
+    private void btnMauMatSoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMauMatSoActionPerformed
+        new MatMauSoForm().setVisible(true);
+    }//GEN-LAST:event_btnMauMatSoActionPerformed
+
+    private void btnMauVoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMauVoActionPerformed
+        new MauVoForm().setVisible(true);
+    }//GEN-LAST:event_btnMauVoActionPerformed
+
+    private void btnChatLieuDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatLieuDayActionPerformed
+        new ChatLieuDayForm().setVisible(true);
+    }//GEN-LAST:event_btnChatLieuDayActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChatLieuDay;
     private javax.swing.JButton btnLoad;
+    private javax.swing.JButton btnMauMatSo;
+    private javax.swing.JButton btnMauVo;
+    private javax.swing.JButton btnPhuKien;
     private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSanPham;
     private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnTheLoai;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnThuongHieu;
     private javax.swing.JButton btnTimSp;
+    private javax.swing.JButton btnTinhNang;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXuatXu;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cboChatLieuDay;
@@ -738,15 +801,6 @@ private void loadCombobox(){
     private javax.swing.JComboBox<String> cboTinhNang;
     private javax.swing.JComboBox<String> cboTinhTrang;
     private javax.swing.JComboBox<String> cboXuatXu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
