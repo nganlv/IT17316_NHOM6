@@ -22,6 +22,4 @@ public interface KhachHangSer {
     String delete(String KH);
     
     String update(KhachHang Kh);
-    
-    ArrayList<KhachHang> Tim(String ma);
 }

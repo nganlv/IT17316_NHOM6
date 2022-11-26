@@ -99,29 +99,5 @@ public class KhachHangRepo {
         }
         return -1;
     }
-     public ArrayList<KhachHang> getTim() throws Exception {
-        ArrayList<KhachHang> Kh = new ArrayList();
-        Connection con = DBContext.getConnection();
-        String sql = "SELECT Ma, HoTen, GioiTinh, NgaySinh, Sdt, DiaChi, Email, NgayTao, NgayHetHan, Diem FROM KhachHang where Ma = ? s";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-
-        while (rs.next()) {
-            Kh.add(new KhachHang(
-                    rs.getString("Ma"),
-                    rs.getString("Hoten"),
-                    rs.getString("GioiTinh"),
-                    rs.getString("Sdt"),
-                    rs.getString("DiaChi"),
-                    rs.getString("Email"),
-                    rs.getString("Diem"),
-                    rs.getDate("NgaySinh"),
-                    rs.getDate("NgayTao"),
-                    rs.getDate("NgayHetHan")
-            ));
-        }
-
-        return Kh;
-    }
 
 }
