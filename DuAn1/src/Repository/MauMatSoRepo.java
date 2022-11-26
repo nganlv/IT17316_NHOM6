@@ -3,76 +3,95 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Repository;
-
-
+import DomainModels.MauMatSo;
+import Repository.Interface.IMauMatSoRepo;
 import Utilities.DBContext;
-import ViewModels.MauMatSo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-
-
-
+import java.util.List;
 /**
  *
- * @author Acer
+ * @author levan
  */
-public class MauMatSoRepo {
-     public ArrayList<MauMatSo> getAll() throws Exception {
-        ArrayList<MauMatSo> mMs = new ArrayList();
-        Connection con = DBContext.getConnection();
-        String sql = "SELECT Id, Ma, Ten FROM     MauMatSo";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-
-        while (rs.next()) {
-            mMs.add(new MauMatSo(
-                    rs.getString("Id"),
-                    rs.getString("Ma"),
-                    rs.getString("Ten")
-                    
-            ));
-        }
-
-        return mMs;
-    }
-     public Integer insert(MauMatSo mau ) throws Exception {
-        String sql = " INSERT INTO MauMatSo (Ma, Ten) VALUES (?,?)";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, mau.getMa());
-            ps.setString(2, mau.getTen());
-            
-            return ps.executeUpdate();
-
-        } catch (Exception e) {
+public class MauMatSoRepo implements IMauMatSoRepo{
+    @Override
+    public List<MauMatSo> getAllMms() {
+        try {
+            List<MauMatSo> listMms = new ArrayList<>();
+            Connection conn = DBContext.getConnection();
+            String sql = "select * from MauMatSo";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                MauMatSo mms = new MauMatSo();
+                mms.setId(rs.getString("Id"));
+                mms.setMa(rs.getString("Ma"));
+                mms.setTen(rs.getString("Ten"));
+                listMms.add(mms);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return listMms;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
-     public Integer delete(String ID) {
-        String sql = "DELETE FROM MauMatSo where Id = ?";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, ID);
 
-            return ps.executeUpdate();
-        } catch (Exception e) {
+    @Override
+    public Integer addMms(MauMatSo mms) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "insert into MauMatSo values(newid(),?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, mms.getMa());
+            ps.setString(2, mms.getTen());
+            int add = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return add;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
-
+        return null;
     }
-      public Integer updateK(MauMatSo cL) {
-        String sql = "UPDATE MauMatSo SET Ten = ? where Ma = ?";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setObject(1, cL.getTen());
-            ps.setObject(2, cL.getMa());
-            
-            return ps.executeUpdate();
-            
-        } catch (Exception e) {
+
+    @Override
+    public Integer updateMms(MauMatSo mms) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "update MauMatSo set Ten=? where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(2, mms.getMa());
+            ps.setString(1, mms.getTen());
+            int update = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return update;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
+    }
+
+    @Override
+    public Integer deleteMms(String ma) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "delete from MauMatSo where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, ma);
+            int delete = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return delete;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

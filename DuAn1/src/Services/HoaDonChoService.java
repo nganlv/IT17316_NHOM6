@@ -4,9 +4,10 @@
  */
 package Services;
 
+import Service.Interface.IHoaDonChoService;
 import DomainModels.HoaDonCho;
 import Repository.HoaDonChoRepo;
-import Repository.IHoaDonChoRepo;
+import Repository.Interface.IHoaDonChoRepo;
 import ViewModels.QlHoaDonCho;
 import java.util.ArrayList;
 import java.util.List;
