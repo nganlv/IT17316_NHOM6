@@ -5,10 +5,21 @@
 package Services.impl;
 
 import DomainModels.ChucVu;
+import DomainModels.ChucVu;
+import DomainModels.ChucVu;
 import Repository.ChucVuRepo;
-import Services.QlChucVu;
+
+import Repository.ChucVuRepo;
+
+import Repository.ChucVuRepo;
+import Service.Interface.IChucVuSer;
+
+
+
+
 import ViewModels.QuanLyChucVu;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,77 +28,53 @@ import java.util.logging.Logger;
  *
  * @author nguye
  */
-public class ChucVuServiceImpl implements QlChucVu{
-   final ChucVuRepo cvRepo = new ChucVuRepo();
-
-//    public List<ChucVu> getAll() {
-//      
-//    }
+public class ChucVuServiceImpl implements IChucVuSer{
+     
+    private final ChucVuRepo iChucVuRepo = new ChucVuRepo();
 
     @Override
-    public Boolean checkMa(String maChucVu) {
-        List<ChucVu> listCV = cvRepo.getView();
-        for (ChucVu cv : listCV) {
-            if(cv.getMa().equalsIgnoreCase(maChucVu)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-//    public String addCV(ChucVu cv) throws SQLException {
-//        if(cvRepo.addCV(cv) < 1){
-//            return "Thêm thất bại";
-//        }else{
-//            return "Thêm thành công";
-//        }
-//    }
-
-    @Override
-    public String updateCV(ChucVu cv) {
-        if(cvRepo.updateCV(cv) < 1){
-            return "Sửa thất bại";
-        }else{
-            return "Sửa thành công";
-        }
-    }
-
-    @Override
-    public String deleteCV(String maChucVu) {
-        if(cvRepo.deleteCV(maChucVu) < 1){
-            return "Xóa thất bại";
-        }else{
-            return "Xóa thành công";
-        }
-    }
-
-    @Override
-    public ChucVu getOne(String maChucVu) {
-        return cvRepo.getOne(maChucVu);
-    }
-
-    @Override
-    public List<QuanLyChucVu> getView() {
-        return cvRepo.getAll();
-    }
-
-    @Override
-    public List<ChucVu> getAlls() {
-         return cvRepo.getView();
-    }
-
-    @Override
-    public String addCVs(ChucVu cv) {
+    public List<QuanLyChucVu> getAllThs() {
         try {
-            if(cvRepo.addCV(cv) < 1){
-                return "Thêm thất bại";
-            }else{
-                return "Thêm thành công";
+            List<QuanLyChucVu> listTh = new ArrayList<>();
+            for (ChucVu th : iChucVuRepo.getAllTh()) {
+                listTh.add(new QuanLyChucVu(th.getId(), th.getMa(), th.getTen()));
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(ChucVuServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            return listTh;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
-         
+
+    @Override
+    public Integer addThs(QuanLyChucVu th) {
+        try {
+            return iChucVuRepo.addTh(new ChucVu(th.getId(), th.getMa(), th.getTen()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Integer updateThs(QuanLyChucVu th) {
+        try {
+            return iChucVuRepo.updateTh(new ChucVu(th.getId(), th.getMa(), th.getTen()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Integer deleteThs(String ma) {
+        try {
+            return iChucVuRepo.deleteTh(ma);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    
 }
