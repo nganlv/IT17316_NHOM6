@@ -8,8 +8,12 @@ package DomainModels;
  *
  * @author levan
  */
+
+
+
 public class ChatLieuDay {
     private String id, ma, ten;
+
 
     public ChatLieuDay() {
     }

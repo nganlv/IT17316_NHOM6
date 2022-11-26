@@ -8,8 +8,10 @@ package ViewModels;
  *
  * @author levan
  */
+
+
 public class QlChatLieuDay {
-    private String id, ma, ten;
+
 
     public QlChatLieuDay() {
     }
@@ -42,5 +44,6 @@ public class QlChatLieuDay {
 
     public void setTen(String ten) {
         this.ten = ten;
-    }
+
 }
+
