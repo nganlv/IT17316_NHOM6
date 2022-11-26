@@ -80,4 +80,16 @@ public class KhachHangImpl implements KhachHangSer {
         }
     }
 
+   
+
+    @Override
+    public ArrayList<KhachHang> Tim(String ma) {
+          try {
+            return KHR.getTim();
+        } catch (Exception ex) {
+            Logger.getLogger(KhachHangImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
 }
