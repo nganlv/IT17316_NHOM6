@@ -6,17 +6,15 @@ package ViewModels;
 
 /**
  *
- * @author levan
+ * @author nguye
  */
+public class QuanLyChucVu {
+      private String id, ma, ten;
 
-
-public class QlChatLieuDay {
-    private String id, ma, ten;
-
-    public QlChatLieuDay() {
+    public QuanLyChucVu() {
     }
 
-    public QlChatLieuDay(String id, String ma, String ten) {
+    public QuanLyChucVu(String id, String ma, String ten) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
@@ -44,7 +42,6 @@ public class QlChatLieuDay {
 
     public void setTen(String ten) {
         this.ten = ten;
-
+    }
+      
 }
-}
-

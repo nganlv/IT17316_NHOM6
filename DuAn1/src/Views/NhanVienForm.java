@@ -38,7 +38,7 @@ private final QLNhanVien nvService=new INhanVien();
 private final QLTaiKhoan tkService=new ITaiKhoan();
 private final QlChucVu cvService=new ChucVuServiceImpl();
 DefaultTableModel model = new DefaultTableModel();
-  private TableRowSorter<DefaultTableModel> sorter;
+
     /**
      * Creates new form NhanVienForm
      */

@@ -27,7 +27,7 @@ public class ChucVuForm extends javax.swing.JFrame {
     }
     
     public void loadTable(){
-        List<QuanLyChucVu> listCV = cvService.getView();
+        List<QuanLyChucVu> listCV = cvService.getAllThs();
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnCount(0);
         model.setRowCount(0);
@@ -44,8 +44,8 @@ public class ChucVuForm extends javax.swing.JFrame {
         txtTenChucVu.setText(tblChucVu.getValueAt(index, 1).toString());
     }
     
-    public ChucVu getData(){
-        ChucVu cv = new ChucVu();
+    public QuanLyChucVu getData(){
+       QuanLyChucVu cv = new QuanLyChucVu();
         cv.setMa(txtMaChucVu.getText().trim());
         cv.setTen(txtTenChucVu.getText().trim());
         return cv;
@@ -214,28 +214,28 @@ public class ChucVuForm extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(checkValidate()){
-            if(cvService.checkMa(txtMaChucVu.getText().trim())){
-                JOptionPane.showMessageDialog(this, "Mã chức vụ đã tồn tại");
-            }else{
-                JOptionPane.showMessageDialog(this, cvService.addCVs(getData()));
+//        if(checkValidate()){
+//            if(cvService.check(txtMaChucVu.getText().trim())){
+//                JOptionPane.showMessageDialog(this, "Mã chức vụ đã tồn tại");
+//            }else{
+                JOptionPane.showMessageDialog(this, cvService.addThs(getData()));
                 loadTable();
-            }
             
-        }
+            
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        if(checkValidate()){
-            if(!cvService.checkMa(txtMaChucVu.getText().trim())){
-                JOptionPane.showMessageDialog(this, "Mã chức vụ không tồn tại");
-            }else{
-                JOptionPane.showMessageDialog(this, cvService.updateCV(getData()));
+//        if(checkValidate()){
+//            if(!cvService.checkMa(txtMaChucVu.getText().trim())){
+//                JOptionPane.showMessageDialog(this, "Mã chức vụ không tồn tại");
+//            }else{
+                JOptionPane.showMessageDialog(this, cvService.updateThs(getData()));
                 loadTable();
-            }
             
-        }
+            
+//        }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -245,7 +245,7 @@ public class ChucVuForm extends javax.swing.JFrame {
         }else{
             int chon = JOptionPane.showConfirmDialog(this, "Bạn chắn chắn muốn xóa", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
             if(chon == JOptionPane.YES_OPTION){
-                JOptionPane.showMessageDialog(this, cvService.deleteCV(txtMaChucVu.getText().trim()));
+                JOptionPane.showMessageDialog(this, cvService.deleteThs(txtMaChucVu.getText().trim()));
                 loadTable();
             }
         }

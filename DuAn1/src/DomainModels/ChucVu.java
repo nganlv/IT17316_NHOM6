@@ -2,21 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ViewModels;
+package DomainModels;
 
 /**
  *
- * @author levan
+ * @author nguye
  */
+public class ChucVu {
+      private String id, ma, ten;
 
-
-public class QlChatLieuDay {
-    private String id, ma, ten;
-
-    public QlChatLieuDay() {
+    public ChucVu() {
     }
 
-    public QlChatLieuDay(String id, String ma, String ten) {
+    public ChucVu(String id, String ma, String ten) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
@@ -44,7 +42,6 @@ public class QlChatLieuDay {
 
     public void setTen(String ten) {
         this.ten = ten;
+    }
 
 }
-}
-

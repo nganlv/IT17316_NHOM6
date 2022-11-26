@@ -28,4 +28,3 @@ public interface QLNhanVien {
        List<QuanLyNhanVien> getTimTens(String ten);
 }
 
-}
