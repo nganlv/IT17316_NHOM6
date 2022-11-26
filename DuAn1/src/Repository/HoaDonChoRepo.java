@@ -4,6 +4,7 @@
  */
 package Repository;
 
+import Repository.Interface.IHoaDonChoRepo;
 import DomainModels.HoaDonCho;
 import Utilities.DBContext;
 import java.util.List;

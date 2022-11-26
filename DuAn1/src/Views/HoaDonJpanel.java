@@ -51,7 +51,7 @@ public class HoaDonJpanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID khách hàng", "ID nhân viên", "Mã hóa đơn", "Tên người nhận", "Ngày tạo", "Ngày thanh toán", "Ngày ship", "Ngày nhận", "Tình trạng", "Địa chỉ", "SĐT"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11"
             }
         ));
         jScrollPane1.setViewportView(tblHoaDon);
@@ -120,13 +120,14 @@ public class HoaDonJpanel extends javax.swing.JPanel {
 
         tblHoaDonChiTiet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID hóa đơn chi tiết", "Số lượng", "Đơn giá"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
         jScrollPane2.setViewportView(tblHoaDonChiTiet);

@@ -6,12 +6,10 @@ package DomainModels;
 
 /**
  *
- * @author nguye
+ * @author levan
  */
 public class XuatXu {
-    private String id;
-    private String ma;
-    private String ten;
+    private String id, ma, ten;
 
     public XuatXu() {
     }
@@ -45,8 +43,5 @@ public class XuatXu {
     public void setTen(String ten) {
         this.ten = ten;
     }
-@Override
-    public String toString() {
-        return ten;
-    }
+    
 }

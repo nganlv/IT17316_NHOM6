@@ -4,6 +4,7 @@
  */
 package Repository;
 
+import Repository.Interface.ISanPham_BanHangRepo;
 import DomainModels.SanPham_BanHang;
 import Utilities.DBContext;
 import java.sql.Connection;

@@ -3,76 +3,95 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Repository;
-
-
+import DomainModels.MauVo;
+import Repository.Interface.IMauVoRepo;
 import Utilities.DBContext;
-import ViewModels.MauVo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-
-
-
+import java.util.List;
 /**
  *
- * @author Acer
+ * @author levan
  */
-public class MauVoRepo {
-     public ArrayList<MauVo> getAll() throws Exception {
-        ArrayList<MauVo> mMs = new ArrayList();
-        Connection con = DBContext.getConnection();
-        String sql = "SELECT Id, Ma, Ten FROM     MauVo";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-
-        while (rs.next()) {
-            mMs.add(new MauVo(
-                    rs.getString("Id"),
-                    rs.getString("Ma"),
-                    rs.getString("Ten")
-                    
-            ));
-        }
-
-        return mMs;
-    }
-     public Integer insert(MauVo mau ) throws Exception {
-        String sql = " INSERT INTO MauVo (Ma, Ten) VALUES (?,?)";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, mau.getMa());
-            ps.setString(2, mau.getTen());
-            
-            return ps.executeUpdate();
-
-        } catch (Exception e) {
+public class MauVoRepo implements IMauVoRepo{
+    @Override
+    public List<MauVo> getAllMv() {
+        try {
+            List<MauVo> listMv = new ArrayList<>();
+            Connection conn = DBContext.getConnection();
+            String sql = "select * from MauVo";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                MauVo mv = new MauVo();
+                mv.setId(rs.getString("Id"));
+                mv.setMa(rs.getString("Ma"));
+                mv.setTen(rs.getString("Ten"));
+                listMv.add(mv);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return listMv;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
-     public Integer delete(String ID) {
-        String sql = "DELETE FROM MauVo where Id = ?";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, ID);
 
-            return ps.executeUpdate();
-        } catch (Exception e) {
+    @Override
+    public Integer addMv(MauVo mv) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "insert into MauVo values(newid(),?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, mv.getMa());
+            ps.setString(2, mv.getTen());
+            int add = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return add;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
-
+        return null;
     }
-      public Integer updateK(MauVo cL) {
-        String sql = "UPDATE MauVo SET Ten = ? where Ma = ?";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setObject(1, cL.getTen());
-            ps.setObject(2, cL.getMa());
-            
-            return ps.executeUpdate();
-            
-        } catch (Exception e) {
+
+    @Override
+    public Integer updateMv(MauVo mv) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "update MauVo set Ten=? where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(2, mv.getMa());
+            ps.setString(1, mv.getTen());
+            int update = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return update;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
+    }
+
+    @Override
+    public Integer deleteMv(String ma) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "delete from MauVo where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, ma);
+            int delete = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return delete;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
