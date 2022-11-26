@@ -5,13 +5,13 @@
 package Views;
 
 import Services.HoaDonChoService;
-import Services.IHoaDonChoService;
+import Service.Interface.IHoaDonChoService;
 import Services.SanPham_BanHangService;
 import ViewModels.QLSanPham_BanHang;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import Services.ISanPham_BanHangService;
+import Service.Interface.ISanPham_BanHangService;
 import ViewModels.QlHoaDonCho;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -33,12 +33,12 @@ public class BanHangJpanel extends javax.swing.JPanel {
         initComponents();
         loadTableSp();
         loadTableGioHang();
-        Clock();
+        clock();
         loadComboboxGH();
         loadComboboxTT();
     }
 
-    public void Clock() {
+    public void clock() {
         new Thread() {
             @Override
             public void run() {

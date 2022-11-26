@@ -4,8 +4,9 @@
  */
 package Services;
 
+import Service.Interface.ISanPham_BanHangService;
 import DomainModels.SanPham_BanHang;
-import Repository.ISanPham_BanHangRepo;
+import Repository.Interface.ISanPham_BanHangRepo;
 import Repository.SanPham_BanHangRepo;
 import ViewModels.QLSanPham_BanHang;
 import java.util.ArrayList;

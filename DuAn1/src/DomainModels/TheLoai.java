@@ -6,12 +6,10 @@ package DomainModels;
 
 /**
  *
- * @author nguye
+ * @author levan
  */
 public class TheLoai {
-    private String id;
-    private String ma;
-    private String ten;
+    private String id, ma, ten;
 
     public TheLoai() {
     }
@@ -45,8 +43,5 @@ public class TheLoai {
     public void setTen(String ten) {
         this.ten = ten;
     }
-@Override
-    public String toString() {
-        return ten;
-    }
+    
 }

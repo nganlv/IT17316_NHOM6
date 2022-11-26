@@ -4,14 +4,12 @@
  */
 package DomainModels;
 
-
-
 /**
  *
- * @author Acer
+ * @author levan
  */
 public class ChatLieuDay {
-    private String id,ma,ten;
+    private String id, ma, ten;
 
     public ChatLieuDay() {
     }
@@ -45,12 +43,5 @@ public class ChatLieuDay {
     public void setTen(String ten) {
         this.ten = ten;
     }
-
-    @Override
-    public String toString() {
-        return "ChatLieuDay{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + '}';
-    }
-    
-    
     
 }

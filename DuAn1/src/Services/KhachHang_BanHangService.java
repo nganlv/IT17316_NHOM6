@@ -4,8 +4,9 @@
  */
 package Services;
 
+import Service.Interface.IKhachHang_BanHangService;
 import DomainModels.KhachHang_BanHang;
-import Repository.IKhachHang_BanHangRepo;
+import Repository.Interface.IKhachHang_BanHangRepo;
 import Repository.KhachHang_BanHangRepo;
 import ViewModels.QlKhachHang_BanHang;
 import java.util.ArrayList;

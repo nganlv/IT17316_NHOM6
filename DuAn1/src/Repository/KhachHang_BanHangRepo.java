@@ -4,6 +4,7 @@
  */
 package Repository;
 
+import Repository.Interface.IKhachHang_BanHangRepo;
 import DomainModels.KhachHang_BanHang;
 import Utilities.DBContext;
 import java.util.List;

@@ -3,77 +3,95 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Repository;
-
-
+import DomainModels.ChatLieuDay;
+import Repository.Interface.IChatLieuDayRepo;
 import Utilities.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-
-import ViewModels.ChatLieuDay;
-
-
+import java.util.List;
 /**
  *
- * @author Acer
+ * @author levan
  */
-public class ChatLieuDayRepo {
-     public ArrayList<ChatLieuDay> getAll() throws Exception {
-        ArrayList<ChatLieuDay> cL = new ArrayList();
-        Connection con = DBContext.getConnection();
-        String sql = "SELECT Id, Ma, Ten FROM     ChatLieuDay";
-        PreparedStatement ps = con.prepareStatement(sql);
-        ResultSet rs = ps.executeQuery();
-
-        while (rs.next()) {
-            cL.add(new ChatLieuDay(
-                    rs.getString("Id"),
-                    rs.getString("Ma"),
-                    rs.getString("Ten")
-                    
-            ));
-        }
-
-        return cL;
-    }
-     public Integer insert(ChatLieuDay day ) throws Exception {
-        String sql = " INSERT INTO ChatLieuDay (Ma, Ten) VALUES (?,?)";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, day.getMa());
-            ps.setString(2, day.getTen());
-            
-            return ps.executeUpdate();
-
-        } catch (Exception e) {
+public class ChatLieuDayRepo implements IChatLieuDayRepo{
+    @Override
+    public List<ChatLieuDay> getAllCld() {
+        try {
+            List<ChatLieuDay> listCld = new ArrayList<>();
+            Connection conn = DBContext.getConnection();
+            String sql = "select * from ChatLieuDay";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChatLieuDay cld = new ChatLieuDay();
+                cld.setId(rs.getString("Id"));
+                cld.setMa(rs.getString("Ma"));
+                cld.setTen(rs.getString("Ten"));
+                listCld.add(cld);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+            return listCld;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
-     public Integer deleteK(String ID) {
-        String sql = "DELETE FROM ChatLieuDay where Id = ?";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, ID);
 
-            return ps.executeUpdate();
-        } catch (Exception e) {
+    @Override
+    public Integer addCld(ChatLieuDay cld) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "insert into ChatLieuDay values(newid(),?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, cld.getMa());
+            ps.setString(2, cld.getTen());
+            int add = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return add;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
-
+        return null;
     }
-      public Integer updateK(ChatLieuDay cL) {
-        String sql = "UPDATE ChatLieuDay SET Ten = ? where Ma = ?";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setObject(1, cL.getTen());
-            ps.setObject(2, cL.getMa());
-            
-            return ps.executeUpdate();
-            
-        } catch (Exception e) {
+
+    @Override
+    public Integer updateCld(ChatLieuDay cld) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "update ChatLieuDay set Ten=? where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(2, cld.getMa());
+            ps.setString(1, cld.getTen());
+            int update = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return update;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
 
+    @Override
+    public Integer deleteCld(String ma) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "delete from ChatLieuDay where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, ma);
+            int delete = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return delete;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
