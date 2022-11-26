@@ -20,7 +20,11 @@ public interface QLNhanVien {
       String delete(String maNV);
        Boolean checkMa(String maNV);
        List<QuanLyNhanVien> getTims(String ma);
+
 //       List<QuanLyNhanVien> getTimTens(String ten);
        List<QuanLyNhanVien> getLOCs(String cv);
+
+
+       List<QuanLyNhanVien> getTimTens(String ten);
 }
 
