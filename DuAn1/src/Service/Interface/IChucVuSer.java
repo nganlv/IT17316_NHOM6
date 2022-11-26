@@ -4,6 +4,7 @@
  */
 package Service.Interface;
 
+import DomainModels.ChucVu;
 import ViewModels.QuanLyChucVu;
 import java.util.List;
 
@@ -13,7 +14,8 @@ import java.util.List;
  */
 public interface IChucVuSer {
     public List<QuanLyChucVu> getAllThs();
-    public Integer addThs(QuanLyChucVu th);
-    public Integer updateThs(QuanLyChucVu th);
+    public List<ChucVu> getAll();
+    public Integer addThs(ChucVu th);
+    public Integer updateThs(ChucVu th);
     public Integer deleteThs(String ma);
 }

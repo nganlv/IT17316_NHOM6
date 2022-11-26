@@ -5,8 +5,10 @@
 package Views;
 
 import DomainModels.ChucVu;
+import DomainModels.TaiKhoan;
 import Services.impl.ChucVuServiceImpl;
-import ViewModels.QuanLyChucVu;
+import Services.impl.ITaiKhoan;
+import ViewModels.QuanLyTaiKhoan;
 
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -14,25 +16,25 @@ import javax.swing.table.DefaultTableModel;
 
 
 
-public class ChucVuForm extends javax.swing.JFrame {
-    final ChucVuServiceImpl cvService = new ChucVuServiceImpl();
+public class TaiKhoanForm extends javax.swing.JFrame {
+    final ITaiKhoan tkService = new ITaiKhoan();
 
     /**
      * Creates new form QLChucVu
      */
-    public ChucVuForm() {
+    public TaiKhoanForm() {
         initComponents();
         setLocationRelativeTo(null);
         loadTable();
     }
     
     public void loadTable(){
-        List<QuanLyChucVu> listCV = cvService.getAllThs();
+        List<QuanLyTaiKhoan> listCV = tkService.getView();
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnCount(0);
         model.setRowCount(0);
         model.setColumnIdentifiers(new String[]{"Mã chức vụ", "Tên chức vụ"});
-        for (QuanLyChucVu cv : listCV) {
+        for (QuanLyTaiKhoan cv : listCV) {
             model.addRow(new Object[]{cv.getMa(), cv.getTen()});
         }
         tblChucVu.setModel(model);
@@ -44,8 +46,8 @@ public class ChucVuForm extends javax.swing.JFrame {
         txtTenChucVu.setText(tblChucVu.getValueAt(index, 1).toString());
     }
     
-    public ChucVu getData(){
-      ChucVu cv = new ChucVu();
+    public TaiKhoan getData(){
+       TaiKhoan cv = new TaiKhoan();
         cv.setMa(txtMaChucVu.getText().trim());
         cv.setTen(txtTenChucVu.getText().trim());
         return cv;
@@ -215,10 +217,10 @@ public class ChucVuForm extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
 //        if(checkValidate()){
-//            if(cvService.check(txtMaChucVu.getText().trim())){
+//            if(tkService.check(txtMaChucVu.getText().trim())){
 //                JOptionPane.showMessageDialog(this, "Mã chức vụ đã tồn tại");
 //            }else{
-                JOptionPane.showMessageDialog(this, cvService.addThs(getData()));
+                JOptionPane.showMessageDialog(this, tkService.addCVs(getData()));
                 loadTable();
             
             
@@ -228,10 +230,10 @@ public class ChucVuForm extends javax.swing.JFrame {
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
 //        if(checkValidate()){
-//            if(!cvService.checkMa(txtMaChucVu.getText().trim())){
+//            if(!tkService.checkMa(txtMaChucVu.getText().trim())){
 //                JOptionPane.showMessageDialog(this, "Mã chức vụ không tồn tại");
 //            }else{
-                JOptionPane.showMessageDialog(this, cvService.updateThs(getData()));
+                JOptionPane.showMessageDialog(this, tkService.updateCV(getData()));
                 loadTable();
             
             
@@ -245,7 +247,7 @@ public class ChucVuForm extends javax.swing.JFrame {
         }else{
             int chon = JOptionPane.showConfirmDialog(this, "Bạn chắn chắn muốn xóa", "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
             if(chon == JOptionPane.YES_OPTION){
-                JOptionPane.showMessageDialog(this, cvService.deleteThs(txtMaChucVu.getText().trim()));
+                JOptionPane.showMessageDialog(this, tkService.deleteCV(txtMaChucVu.getText().trim()));
                 loadTable();
             }
         }
@@ -276,14 +278,18 @@ public class ChucVuForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChucVuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChucVuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChucVuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChucVuForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TaiKhoanForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -292,7 +298,7 @@ public class ChucVuForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChucVuForm().setVisible(true);
+                new TaiKhoanForm().setVisible(true);
             }
         });
     }

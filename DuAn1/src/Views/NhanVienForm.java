@@ -7,9 +7,10 @@ package Views;
 import DomainModels.ChucVu;
 import DomainModels.NhanVien;
 import DomainModels.TaiKhoan;
+import Service.Interface.IChucVuSer;
 import Services.QLNhanVien;
 import Services.QLTaiKhoan;
-import Services.QlChucVu;
+
 import Services.impl.ChucVuServiceImpl;
 import Services.impl.INhanVien;
 import Services.impl.ITaiKhoan;
@@ -36,7 +37,7 @@ import javax.swing.table.TableRowSorter;
 public class NhanVienForm extends javax.swing.JFrame {
 private final QLNhanVien nvService=new INhanVien();
 private final QLTaiKhoan tkService=new ITaiKhoan();
-private final QlChucVu cvService=new ChucVuServiceImpl();
+private final IChucVuSer cvService=new ChucVuServiceImpl();
 DefaultTableModel model = new DefaultTableModel();
 
     /**
@@ -86,11 +87,11 @@ public void LoadTable(){
         for (TaiKhoan taiKhoan : Listtk) {
             cbTK.addItem(taiKhoan);
         }
-          List<ChucVu> listCV = cvService.getAlls();
+          List<ChucVu> listCV = cvService.getAll();
         cbCV.removeAllItems();
         for (ChucVu cv : listCV) {
             cbCV.addItem(cv);
-//            cbLoc.addItem(cv);
+          cbLoc.addItem(cv);
         }
     }
      
