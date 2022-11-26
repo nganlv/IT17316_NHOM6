@@ -5,15 +5,13 @@
 package ViewModels;
 
 import java.util.Date;
-import java.util.logging.Logger;
 
 /**
  *
  * @author nguye
  */
 public class QuanLyNhanVien {
-
-   private String ma;
+      private String ma;
    private String ten;
    private String gioitinh;
    private Date ngaysinh;
@@ -120,7 +118,5 @@ public class QuanLyNhanVien {
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
-
-
-
+   
 }

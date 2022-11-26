@@ -139,7 +139,7 @@ public class NhanVienRepo {
 
         try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(1, ma);
-       
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 NhanVien nv = new NhanVien();
@@ -165,21 +165,22 @@ public class NhanVienRepo {
 
         return null;
     }
-    
-     public List<NhanVien> getloc(String cv) {
-        List<NhanVien> listTNV = new ArrayList<>();
+
+    public List<QuanLyNhanVien> getloc(String cv) {
+        List<QuanLyNhanVien> listTNV = new ArrayList<>();
         String sql = """
+                     
                      select NhanVien.Ma, NhanVien.HoTen, GioiTinh, NgaySinh, Sdt, NhanVien.DiaChi,Email, TaiKhoan.Ten as 'TaiKhoan', ChucVu.Ten as 'ChucVu', TrangThai 
-                                            from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id
-                                            				join ChucVu on NhanVien.IdCV = ChucVu.Id 
-                                          where ChucVu.Ten like '%"+cv+"%'  """;
+                                            from NhanVien join TaiKhoan on NhanVien.IdTK = TaiKhoan.Id \n
+                                            				join ChucVu on NhanVien.IdCV = ChucVu.Id \n
+                                          where ChucVu.Ten=?  """;
 
         try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
             ps.setString(1, cv);
-       
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                NhanVien nv = new NhanVien();
+                QuanLyNhanVien nv = new QuanLyNhanVien();
                 nv.setMa(rs.getString("Ma"));
                 nv.setTen(rs.getString("HoTen"));
                 nv.setGioitinh(rs.getString("GioiTinh"));
@@ -187,13 +188,15 @@ public class NhanVienRepo {
                 nv.setSdt(rs.getString("Sdt"));
                 nv.setDiachi(rs.getString("DiaChi"));
                 nv.setEmail(rs.getString("Email"));
-                nv.setIdtk(rs.getString("TaiKhoan"));
-                nv.setIdcv(rs.getString("ChucVu"));
+                nv.setTaikhoan(rs.getString("TaiKhoan"));
+                nv.setChucvu(rs.getString("ChucVu"));
                 nv.setTrangthai(rs.getInt("TrangThai"));
                 listTNV.add(nv);
 
             }
-
+            rs.close();
+            ps.close();
+            con.close();
             return listTNV;
 
         } catch (Exception e) {
@@ -202,15 +205,14 @@ public class NhanVienRepo {
 
         return null;
     }
-    
+
     public List<NhanVien> getTimTen(String ten) {
         List<NhanVien> listTNV = new ArrayList<>();
-        String sql ="select *from NhanVien where NhanVien.HoTen like '%"+ten+"%'";
+        String sql = "select *from NhanVien where NhanVien.HoTen like '%" + ten + "%'";
 
         try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql);) {
-          
+
 //           ps.setString(1, ten);
-       
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 NhanVien tnv = new NhanVien();

@@ -13,6 +13,7 @@ import Services.QlChucVu;
 import Services.impl.ChucVuServiceImpl;
 import Services.impl.INhanVien;
 import Services.impl.ITaiKhoan;
+import ViewModels.QuanLyChucVu;
 
 import ViewModels.QuanLyNhanVien;
 import java.text.ParseException;
@@ -22,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -45,7 +47,8 @@ DefaultTableModel model = new DefaultTableModel();
       
         setLocationRelativeTo(null);
          LoadTable();
-         loadComboBox();
+         loadCombobox();
+        
         dpTime.getSettings().setAllowKeyboardEditing(false);
         dpTime.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
         dpTime.getSettings().setFormatForDatesCommonEra("dd-MM-yyyy");
@@ -76,20 +79,22 @@ public void LoadTable(){
   tblNhanVien.setModel(model);
     
 }
-public void loadComboBox(){
-    List<TaiKhoan> listtk=tkService.getAlls();
-    cbTK.removeAllItems();
-    for (TaiKhoan taiKhoan : listtk) {
-        cbTK.addItem(taiKhoan);
-        
-    }
-      List<ChucVu> listCV = cvService.getAlls();
+
+    private void loadCombobox() {
+    List<TaiKhoan> Listtk=tkService.getAlls();
+        cbTK.removeAllItems();
+        for (TaiKhoan taiKhoan : Listtk) {
+            cbTK.addItem(taiKhoan);
+        }
+          List<ChucVu> listCV = cvService.getAlls();
         cbCV.removeAllItems();
         for (ChucVu cv : listCV) {
             cbCV.addItem(cv);
-            cbLoc.addItem(cv);
+//            cbLoc.addItem(cv);
         }
-}
+    }
+     
+
  public NhanVien getData(){
         NhanVien nv = new NhanVien();
         nv.setMa(txtMa.getText().trim());
@@ -112,7 +117,7 @@ public void loadComboBox(){
         nv.setEmail(txtEmail.getText().trim());
         
        TaiKhoan ch = (TaiKhoan) cbTK.getSelectedItem();
-        ChucVu cv = (ChucVu) cbCV.getSelectedItem();
+    ChucVu cv = (ChucVu) cbCV.getSelectedItem();
         
         nv.setIdtk(ch.getId());
         nv.setIdcv(cv.getId());
@@ -150,10 +155,11 @@ public void loadComboBox(){
                 break;
             }
         }
-        
-        for (int i = 0; i < cbCV.getItemCount(); i++) {
-            ChucVu cv = cbCV.getItemAt(i);
+       
+       for (int i = 0; i < cbCV.getItemCount(); i++) {
+         ChucVu cv = cbCV.getItemAt(i);
             if (cv.getTen().equalsIgnoreCase(tblNhanVien.getValueAt(index, 8).toString())) {
+            } else {
                 cbCV.setSelectedIndex(i);
                 break;
             }
@@ -202,7 +208,7 @@ public void loadComboBox(){
             String ten = txtSearch.getText();
             model.setColumnIdentifiers(new String[]{"Mã nhân viên", "Tên",  "Giới tính", "Ngày sinh","SDT", "Địa chỉ",  "Email", "TaiKhoan", "Chức vụ", "Trạng thái"});
             model.setRowCount(0);
-            List<QuanLyNhanVien> dsnv = nvService.getTimTens(ten);
+            List<QuanLyNhanVien> dsnv = nvService.getTims(ten);
             for (QuanLyNhanVien kh : dsnv) {
                 String trangThai;
         if(kh.getTrangthai()==1){
@@ -262,7 +268,7 @@ public void loadComboBox(){
         dpTime = new com.github.lgooddatepicker.components.DatePicker();
         txtEmail = new javax.swing.JTextField();
         cbTK = new javax.swing.JComboBox<TaiKhoan>();
-        cbCV = new javax.swing.JComboBox<>();
+        cbCV = new javax.swing.JComboBox<ChucVu>();
         rdDanglam = new javax.swing.JRadioButton();
         rdDanghiviec = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -273,7 +279,7 @@ public void loadComboBox(){
         jButton4 = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
         btnTim = new javax.swing.JButton();
-        cbLoc = new javax.swing.JComboBox<>();
+        cbLoc = new javax.swing.JComboBox<ChucVu>();
         btnLoc = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
@@ -544,7 +550,19 @@ loadTextField();
 
     private void btnLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocActionPerformed
         // TODO add your handling code here:
-         tim();
+       DefaultTableModel model=new DefaultTableModel();
+       model.setColumnIdentifiers(new String[]{"Mã nhân viên", "Tên",  "Giới tính", "Ngày sinh","SDT", "Địa chỉ",  "Email", "TaiKhoan", "Chức vụ", "Trạng thái"});
+        List<QuanLyNhanVien> listQlnv=nvService.getLOCs(String.valueOf(cbLoc.getItemAt(cbLoc.getSelectedIndex())));
+          for (QuanLyNhanVien nv : listQlnv) {
+       String trangThai;
+       if(nv.getTrangthai()==1){
+            trangThai="dang lam";
+        }else{
+           trangThai="Da nghi viec";
+        }
+       model.addRow(new Object[]{nv.getMa(),nv.getTen(),nv.getGioitinh(),formatDate(nv.getNgaysinh()),nv.getSdt(),nv.getDiachi(),nv.getEmail(),nv.getTaikhoan(),nv.getChucvu(),trangThai});
+  }
+          tblNhanVien.setModel(model);
     }//GEN-LAST:event_btnLocActionPerformed
 
     /**

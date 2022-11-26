@@ -6,9 +6,12 @@ package DomainModels;
 
 import java.util.Date;
 
-
+/**
+ *
+ * @author nguye
+ */
 public class NhanVien {
-   private String id;
+     private String id;
    private String ma;
    private String ten;
    private String gioitinh;
@@ -36,8 +39,6 @@ public class NhanVien {
         this.idcv = idcv;
         this.trangthai = trangthai;
     }
-
-   
 
     public String getId() {
         return id;
@@ -126,9 +127,5 @@ public class NhanVien {
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
-
-
- 
    
-
 }

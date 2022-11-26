@@ -5,8 +5,8 @@
 package Repository;
 
 import DomainModels.XuatXu;
+import Repository.Interface.IXuatXuRepo;
 import Utilities.DBContext;
-import ViewModels.QuanLyXuatXu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,100 +16,85 @@ import java.util.List;
 
 /**
  *
- * @author nguye
+ * @author levan
  */
-public class XuatXuRepo {
-    public List<QuanLyXuatXu> getAll(){
-       List<QuanLyXuatXu> listCV=new ArrayList();
-       String sql="select Id,Ma,Ten from XuatXu";
-       try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
+public class XuatXuRepo implements IXuatXuRepo {
+
+    @Override
+    public List<XuatXu> getAllXx() {
+        try {
+            List<XuatXu> listXx = new ArrayList<>();
+            Connection conn = DBContext.getConnection();
+            String sql = "select * from XuatXu";
+            PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-            listCV.add(new QuanLyXuatXu(rs.getString("Id"),rs.getString("Ma"),rs.getString("Ten")));
+                XuatXu xx = new XuatXu();
+                xx.setId(rs.getString("Id"));
+                xx.setMa(rs.getString("Ma"));
+                xx.setTen(rs.getString("Ten"));
+                listXx.add(xx);
             }
-            return listCV;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    
-    return null;
-    }
-     
-    public List<XuatXu> getView() {
-        List<XuatXu> listCV = new ArrayList<>();
-        String sql = """
-                     SELECT Id, Ma, Ten
-                     FROM     XuatXu""";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                listCV.add(new XuatXu(rs.getString("Id") ,rs.getString("Ma"), rs.getString("Ten")));
-            }
-            return listCV;
-        } catch (Exception e) {
+            rs.close();
+            ps.close();
+            conn.close();
+            return listXx;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-       public XuatXu getOne(String maCV) {
-        String sql = """
-                     SELECT Id, Ma, Ten
-                     FROM     XuatXu """;
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, maCV);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                XuatXu cv = new XuatXu(rs.getString(1), rs.getString(2), rs.getString(3));
-                return cv;
-            }
 
-        } catch (Exception e) {
+    @Override
+    public Integer addXx(XuatXu xx) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "insert into XuatXu values(newid(),?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, xx.getMa());
+            ps.setString(2, xx.getTen());
+            int add = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return add;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
-     public Integer addCV(XuatXu cv) throws SQLException{
-      String sql="insert into XuatXu(Ma,Ten) values(?,?)";
-      try(Connection conn=DBContext.getConnection();
-              PreparedStatement ps=conn.prepareStatement(sql)){
-          ps.setObject(1,cv.getMa());
-          ps.setObject(2,cv.getTen());
-return ps.executeUpdate();
-      }catch(SQLException ex){
-          ex.printStackTrace();
-      }
-      return -1;
-  }
-    public Integer updateCV(XuatXu cv) {
-        String sql = """
-                     UPDATE [dbo].[XuatXu]
-                             SET [Ten] = ?
-                           WHERE Ma = ? """;
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setObject(2, cv.getMa());
-            ps.setObject(1, cv.getTen());
 
-            return ps.executeUpdate();
-        } catch (Exception e) {
+    @Override
+    public Integer updateXx(XuatXu xx) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "update XuatXu set Ten=? where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(2, xx.getMa());
+            ps.setString(1, xx.getTen());
+            int update = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return update;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
-        
-    } 
-    
-    
-     public Integer deleteCV(String maXuatXu) {
-        String sql = """
-                     DELETE FROM [dbo].[XuatXu]
-                                 WHERE Ma = ?""";
-        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, maXuatXu);
+        return null;
+    }
 
-            return ps.executeUpdate();
-        } catch (Exception e) {
+    @Override
+    public Integer deleteXx(String ma) {
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "delete from XuatXu where Ma=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, ma);
+            int delete = ps.executeUpdate();
+            ps.close();
+            conn.close();
+            return delete;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
 }

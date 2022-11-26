@@ -4,113 +4,22 @@
  */
 package DomainModels;
 
-import java.math.BigDecimal;
-
 /**
  *
-
-
+ * @author levan
  */
 public class SanPham {
-    private String id, maSP , tenSP;
-
- 
-public class SanPham {
-    private String id, maSP , tenSP;
-
+    private String id, ma, ten;
 
     public SanPham() {
     }
 
-
-    public SanPham(String ma, String ten, String thuongHieu, String xuatXu, String gioiTinh, String mauSac, String kichThuoc, String chatLieu, int namBh, BigDecimal donGia, int soLuong) {
+    public SanPham(String id, String ma, String ten) {
+        this.id = id;
         this.ma = ma;
         this.ten = ten;
-        this.thuongHieu = thuongHieu;
-        this.xuatXu = xuatXu;
-        this.gioiTinh = gioiTinh;
-        this.mauSac = mauSac;
-        this.kichThuoc = kichThuoc;
-        this.chatLieu = chatLieu;
-        this.namBh = namBh;
-        this.donGia = donGia;
-        this.soLuong = soLuong;
-
     }
 
-    
-
-
-
-    public void setXuatXu(String xuatXu) {
-        this.xuatXu = xuatXu;
-    }
-
-    public String getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
-    public String getMauSac() {
-        return mauSac;
-    }
-
-    public void setMauSac(String mauSac) {
-        this.mauSac = mauSac;
-    }
-
-    public String getKichThuoc() {
-        return kichThuoc;
-    }
-
-    public void setKichThuoc(String kichThuoc) {
-        this.kichThuoc = kichThuoc;
-    }
-
-    public String getChatLieu() {
-        return chatLieu;
-    }
-
-    public void setChatLieu(String chatLieu) {
-        this.chatLieu = chatLieu;
-    }
-
-    public int getNamBh() {
-        return namBh;
-    }
-
-    public void setNamBh(int namBh) {
-        this.namBh = namBh;
-    }
-
-    public BigDecimal getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(BigDecimal donGia) {
-        this.donGia = donGia;
-    }
-
-    public int getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
-    }
-   
-
-    public SanPham(String id, String maSP, String tenSP) {
-        this.id = id;
-        this.maSP = maSP;
-        this.tenSP = tenSP;
-    }
-
-    
-    
     public String getId() {
         return id;
     }
@@ -119,25 +28,20 @@ public class SanPham {
         this.id = id;
     }
 
-    public String getMaSP() {
-        return maSP;
+    public String getMa() {
+        return ma;
     }
 
-    public void setMaSP(String maSP) {
-        this.maSP = maSP;
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
-    public String getTenSP() {
-        return tenSP;
+    public String getTen() {
+        return ten;
     }
 
-    public void setTenSP(String tenSP) {
-        this.tenSP = tenSP;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
-
-    @Override
-    public String toString() {
-        return "maSP=" + maSP + ", tenSP=" + tenSP;
-    }
-
+    
 }

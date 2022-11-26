@@ -4,6 +4,7 @@
  */
 package Repository;
 
+import Repository.Interface.ISanPham_BanHangRepo;
 import DomainModels.SanPham_BanHang;
 import Utilities.DBContext;
 import java.sql.Connection;
@@ -24,15 +25,12 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
         try {
             List<SanPham_BanHang> listSp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia, FORMAT(GiamGia,'c','vi-VN') as GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
-                    + "  join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
-                    + "  join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
-                    + "  join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
+            String sql = "select  SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia, FORMAT(GiamGia,'c','vi-VN') as GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
+                    + " join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
+                    + " join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
+                    + " join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
+                    + "join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id";
 
-            String sql = "select SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia,"
-                    + " FORMAT(GiamGia,'c','vi-VN') as GiamGia, MauSac, ChatLieu, KichThuoc, Loai, GioiTinh, KieuMay, "
-                    + " SoLuongTon from SanPham join ChiTietSP on SanPham.Id=ChiTietSP.IdSP"
-                    + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -46,11 +44,6 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
                 sp.setKichThuoc(rs.getString("KichThuoc"));
                 sp.setMauVo(rs.getString("MauVo"));
                 sp.setTheLoai(rs.getString("TheLoai"));
-
-                sp.setMauSac(rs.getString("MauSac"));
-                sp.setChatLieu(rs.getString("ChatLieu"));
-                sp.setKichThuoc(rs.getString("KichThuoc"));
-                sp.setLoai(rs.getString("Loai"));
                 sp.setGioiTinh(rs.getString("GioiTinh"));
                 sp.setKieuMay(rs.getString("KieuMay"));
                 sp.setSoLuong(rs.getInt("SoLuongTon"));
@@ -71,7 +64,8 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
         try {
             List<SanPham_BanHang> listSp = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia, FORMAT(GiamGia,'c','vi-VN') as GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
+            String sql = "select  SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia, FORMAT(GiamGia,'c','vi-VN') as GiamGia, HinhDangMatSo, ChatLieuMatKinh, KichThuoc, MauVo.Ten as MauVo, TheLoai.Ten as TheLoai,GioiTinh, KieuMay, SoLuongTon from SanPham \n"
+
                     + "  join ChiTietSP on SanPham.Id=ChiTietSP.IdSP\n"
                     + "  join MauVo on MauVo.Id=ChiTietSP.IdMauVo\n"
                     + "  join TheLoai on TheLoai.Id=ChiTietSP.IdTheLoai\n"
@@ -79,11 +73,8 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
                     + " where SanPham.Ma=?";
             
 
-            String sql = "select SanPham.Ma, SanPham.Ten, FORMAT(DonGia,'c','vi-VN') as DonGia,"
-                    + " FORMAT(GiamGia,'c','vi-VN') as GiamGia, MauSac, ChatLieu, KichThuoc, Loai, GioiTinh, KieuMay, "
-                    + " SoLuongTon from SanPham join ChiTietSP on SanPham.Id=ChiTietSP.IdSP"
-                    + " join KhuyenMai on ChiTietSP.IdKm=KhuyenMai.Id"
-                    + " where SanPham.Ma=?";
+
+                              
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ma);
             ResultSet rs = ps.executeQuery();
@@ -98,11 +89,6 @@ public class SanPham_BanHangRepo implements ISanPham_BanHangRepo {
                 sp.setKichThuoc(rs.getString("KichThuoc"));
                 sp.setMauVo(rs.getString("MauVo"));
                 sp.setTheLoai(rs.getString("TheLoai"));
-
-                sp.setMauSac(rs.getString("MauSac"));
-                sp.setChatLieu(rs.getString("ChatLieu"));
-                sp.setKichThuoc(rs.getString("KichThuoc"));
-                sp.setLoai(rs.getString("Loai"));
                 sp.setGioiTinh(rs.getString("GioiTinh"));
                 sp.setKieuMay(rs.getString("KieuMay"));
                 sp.setSoLuong(rs.getInt("SoLuongTon"));

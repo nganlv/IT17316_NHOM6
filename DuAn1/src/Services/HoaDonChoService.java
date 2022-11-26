@@ -4,9 +4,10 @@
  */
 package Services;
 
+import Service.Interface.IHoaDonChoService;
 import DomainModels.HoaDonCho;
 import Repository.HoaDonChoRepo;
-import Repository.IHoaDonChoRepo;
+import Repository.Interface.IHoaDonChoRepo;
 import ViewModels.QlHoaDonCho;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,6 @@ public class HoaDonChoService implements IHoaDonChoService{
         }
         return null;
     }
-    @Override
     public List<QlHoaDonCho> getHd2s(String ma){
         try {
             List<QlHoaDonCho> listQlHd=new ArrayList<>();
