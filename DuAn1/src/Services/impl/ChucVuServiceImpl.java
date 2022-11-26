@@ -47,7 +47,7 @@ public class ChucVuServiceImpl implements IChucVuSer{
     }
 
     @Override
-    public Integer addThs(QuanLyChucVu th) {
+    public Integer addThs(ChucVu th) {
         try {
             return iChucVuRepo.addTh(new ChucVu(th.getId(), th.getMa(), th.getTen()));
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class ChucVuServiceImpl implements IChucVuSer{
     }
 
     @Override
-    public Integer updateThs(QuanLyChucVu th) {
+    public Integer updateThs(ChucVu th) {
         try {
             return iChucVuRepo.updateTh(new ChucVu(th.getId(), th.getMa(), th.getTen()));
         } catch (Exception e) {
@@ -76,5 +76,20 @@ public class ChucVuServiceImpl implements IChucVuSer{
         return null;
     }
 
+    @Override
+    public List<ChucVu> getAll() {
+         
+        try {
+            List<ChucVu> listTh = new ArrayList<>();
+            for (ChucVu th : iChucVuRepo.getAllTh()) {
+                listTh.add(new ChucVu(th.getId(), th.getMa(), th.getTen()));
+            }
+            return listTh;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     
 }

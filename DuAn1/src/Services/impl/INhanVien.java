@@ -121,6 +121,11 @@ public class INhanVien implements QLNhanVien{
         return null;
     }
 
+    @Override
+    public List<QuanLyNhanVien> getTimTens(String ten) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 
 
 }
