@@ -9,7 +9,7 @@ package DomainModels;
  * @author nguye
  */
 public class ChucVu {
-    private String id;
+      private String id;
     private String ma;
     private String ten;
 
@@ -45,8 +45,5 @@ public class ChucVu {
     public void setTen(String ten) {
         this.ten = ten;
     }
-@Override
-    public String toString() {
-        return ten;
-    }
+    
 }

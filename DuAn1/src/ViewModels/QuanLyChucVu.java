@@ -9,7 +9,7 @@ package ViewModels;
  * @author nguye
  */
 public class QuanLyChucVu {
-     private String id;
+        private String id;
     private String ma;
     private String ten;
 
@@ -45,8 +45,9 @@ public class QuanLyChucVu {
     public void setTen(String ten) {
         this.ten = ten;
     }
-  @Override
-    public String toString() {
-        return ten;
-    }
+    @Override
+public String toString(){
+    return ten;
 }
+}
+

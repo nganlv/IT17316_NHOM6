@@ -9,15 +9,16 @@ import Repository.ChucVuRepo;
 import Services.QlChucVu;
 import ViewModels.QuanLyChucVu;
 import java.sql.SQLException;
-
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-
+/**
+ *
+ * @author nguye
+ */
 public class ChucVuServiceImpl implements QlChucVu{
-    final ChucVuRepo cvRepo = new ChucVuRepo();
+   final ChucVuRepo cvRepo = new ChucVuRepo();
 
 //    public List<ChucVu> getAll() {
 //      
@@ -88,6 +89,5 @@ public class ChucVuServiceImpl implements QlChucVu{
         }
         return null;
     }
-       
-    
+         
 }
