@@ -94,7 +94,11 @@ private void chuChay() {
         jlbDongHo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jlbDongHo.setForeground(new java.awt.Color(0, 153, 153));
         jlbDongHo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         jlbDongHo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Acer\\OneDrive\\Documents\\GitHub\\IT17316_NHOM6\\DuAn1\\src\\Image\\icons8-watch-48.png")); // NOI18N
+
+      
+
         jlbDongHo.setText("QUẢN LÝ BÁN ĐỒNG HỒ  ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

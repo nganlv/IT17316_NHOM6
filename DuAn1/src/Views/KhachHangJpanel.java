@@ -15,6 +15,99 @@ public class KhachHangJpanel extends javax.swing.JPanel {
      */
     public KhachHangJpanel() {
         initComponents();
+
+
+
+        loadTable();
+        
+         txtNgaySinh.getSettings().setAllowKeyboardEditing(false); 
+         txtNgayTao.getSettings().setAllowKeyboardEditing(false); 
+         txtNgayHetHan.getSettings().setAllowKeyboardEditing(false); 
+         txtNgaySinh.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
+         txtNgayTao.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
+         txtNgayHetHan.getSettings().setDateRangeLimits(LocalDate.MIN, LocalDate.now());
+
+        
+    }
+
+    public void loadTable() {
+        ArrayList<KhachHang> listKh = KHser.getView();
+        DefaultTableModel model = (DefaultTableModel) tblKhachHang.getModel();
+        model.setColumnCount(0);
+        model.addColumn("Mã");
+        model.addColumn("Họ và tên");
+        model.addColumn("Giới Tính");
+        model.addColumn("SĐT");
+        model.addColumn("Địa Chỉ");
+        model.addColumn("Email");
+        model.addColumn("Điểm");
+        model.addColumn("Ngày sinh");
+        model.addColumn("Ngày tạo");
+        model.addColumn("Ngày hết hạn");
+        model.setRowCount(0);
+
+        for (KhachHang k : listKh) {
+            model.addRow(new Object[]{
+                k.getMaKH(),
+                k.getHoTen(),
+                k.getGioiTinh(),
+                k.getSdt(),
+                k.getDiaChi(),
+                k.getEmail(),
+                k.getDiem(),
+                k.getNgaysinh(),
+                k.getNgayTao(),
+                k.getNgayHetHan()
+
+            });
+        }
+    }
+    Date date1, date2, date3;
+
+    public KhachHang getInsert() {
+        KhachHang kh = new KhachHang();
+        kh.setMaKH(txtMA.getText().trim());
+        kh.setHoTen(txtHoTen.getText().trim());
+        kh.setGioiTinh(rdoNam.isSelected() ? "Nam" : "Nữ");
+        kh.setSdt(txtSDT.getText().trim());
+        kh.setDiaChi(txtDiaChi.getText().trim());
+        kh.setEmail(txtEmail.getText().trim());
+        kh.setDiem(txtDiem.getText().trim());
+        txtNgaySinh.getText();
+        date1 = java.sql.Date.valueOf(txtNgaySinh.getDate());
+//        kh.setNgaysinh(date1);
+
+        txtNgayTao.getText();
+
+        date2 = java.sql.Date.valueOf(txtNgayTao.getDate());
+//        kh.setNgayTao(date2);
+
+        txtNgayHetHan.getText();
+        date3 = java.sql.Date.valueOf(txtNgayHetHan.getDate());
+//        kh.setNgayHetHan(date3);
+
+        return kh;
+    }
+
+    public void loadTextField() {
+        int index = tblKhachHang.getSelectedRow();
+        txtMA.setText(tblKhachHang.getValueAt(index, 0).toString());
+        txtHoTen.setText(tblKhachHang.getValueAt(index, 1).toString());
+
+        if (tblKhachHang.getValueAt(index, 2).toString().equals("Nam")) {
+            rdoNam.setSelected(true);
+        } else {
+            rdoNu.setSelected(true);
+        }
+        txtSDT.setText(tblKhachHang.getValueAt(index, 3).toString());
+        txtDiaChi.setText(tblKhachHang.getValueAt(index, 4).toString());
+
+        txtEmail.setText(tblKhachHang.getValueAt(index, 5).toString());
+        txtDiem.setText(tblKhachHang.getValueAt(index, 6).toString());
+        txtNgaySinh.setText(tblKhachHang.getValueAt(index, 7).toString());
+        txtNgayTao.setText(tblKhachHang.getValueAt(index, 8).toString());
+        txtNgayHetHan.setText(tblKhachHang.getValueAt(index, 9).toString());
+
     }
 
     /**
