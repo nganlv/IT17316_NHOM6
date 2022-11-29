@@ -4,10 +4,14 @@
  */
 package Application;
 
+import Views.FormDangNhap;
+
 /**
  *
  * @author levan
  */
-public class AppThongKe {
-    
+public class AppMain {
+    public static void main(String[] args) {
+        new FormDangNhap().setVisible(true);
+    }
 }

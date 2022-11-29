@@ -4,15 +4,15 @@
  */
 package Service.Interface;
 
-import ViewModels.QLSanPham_BanHang;
+import ViewModels.QlHoaDonChiTiet;
 import java.util.List;
 
 /**
  *
  * @author levan
  */
-public interface ISanPham_BanHangService {
-    List<QLSanPham_BanHang> getAllSps();
-    List<QLSanPham_BanHang> timSpTheoMas(String ma);
-
+public interface IHoaDonChiTietSer {
+    public List<QlHoaDonChiTiet> getAllHdcts(String ma);
+    public Integer updateSls(QlHoaDonChiTiet hdct);
+    public List<QlHoaDonChiTiet> deletes();
 }
