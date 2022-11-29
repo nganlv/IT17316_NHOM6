@@ -25,18 +25,17 @@ public class HoaDonChoRepo implements IHoaDonChoRepo {
         try {
             List<HoaDonCho> listHd = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select HoaDon.Ma as MaHD, HoaDon.NgayTao, NhanVien.Ma as MaNV, KhachHang.Ma as MaKH, KhachHang.HoTen from HoaDon \n"
-                    + " join NhanVien on HoaDon.IdNV=NhanVien.Id\n"
-                    + " join KhachHang on KhachHang.Id=HoaDon.IdKH\n"
-                    + " where HoaDon.Ma='hd000'";
+            String sql = "select HoaDon.Ma as MaHd, GETDATE() as NgayTao, NhanVien.Ma as MaNv, KhachHang.HoTen from HoaDon \n"
+                    + "join NhanVien on HoaDon.IdNV=NhanVien.Id\n"
+                    + "join KhachHang on KhachHang.Id=HoaDon.IdKH\n"
+                    + "where HoaDon.Ma='hd000'";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 HoaDonCho hdc = new HoaDonCho();
-                hdc.setMaHd(rs.getString("MaHD"));
+                hdc.setMaHd(rs.getString("MaHd"));
                 hdc.setNgayTao(rs.getString("NgayTao"));
-                hdc.setMaNv(rs.getString("MaNV"));
-                hdc.setMaKh(rs.getString("MaKH"));
+                hdc.setMaNv(rs.getString("MaNv"));
                 hdc.setTenKh(rs.getString("HoTen"));
                 listHd.add(hdc);
             }
@@ -50,24 +49,24 @@ public class HoaDonChoRepo implements IHoaDonChoRepo {
         return null;
     }
 
+
     @Override
     public List<HoaDonCho> getHd2(String ma) {
         try {
             List<HoaDonCho> listHd = new ArrayList<>();
             Connection conn = DBContext.getConnection();
-            String sql = "select top(1) HoaDon.Ma as MaHD, GETDATE() as NgayTao, NhanVien.Ma as MaNV, KhachHang.Ma as MaKH, KhachHang.HoTen from HoaDon \n"
-                    + " join NhanVien on HoaDon.IdNV=NhanVien.Id\n"
-                    + " join KhachHang on KhachHang.Id=HoaDon.IdKH\n"
-                    + " where KhachHang.Ma=?";
+            String sql = "select HoaDon.Ma as MaHd, HoaDon.NgayTao, NhanVien.Ma as MaNv, KhachHang.HoTen from HoaDon \n"
+                    + "join NhanVien on HoaDon.IdNV=NhanVien.Id\n"
+                    + "join KhachHang on KhachHang.Id=HoaDon.IdKH\n"
+                    + "where HoaDon.Ma=?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, ma);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 HoaDonCho hdc = new HoaDonCho();
-                hdc.setMaHd(rs.getString("MaHD"));
+                hdc.setMaHd(rs.getString("MaHd"));
                 hdc.setNgayTao(rs.getString("NgayTao"));
-                hdc.setMaNv(rs.getString("MaNV"));
-                hdc.setMaKh(rs.getString("MaKH"));
+                hdc.setMaNv(rs.getString("MaNv"));
                 hdc.setTenKh(rs.getString("HoTen"));
                 listHd.add(hdc);
             }

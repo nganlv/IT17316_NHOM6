@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface ISanPham_BanHangService {
     List<QLSanPham_BanHang> getAllSps();
-    List<QLSanPham_BanHang> timSpTheoMas(String ma);
+    List<QLSanPham_BanHang> timSpTheoMas();
 
+    public List<QLSanPham_BanHang> timSpTheoMas(String text);
 }

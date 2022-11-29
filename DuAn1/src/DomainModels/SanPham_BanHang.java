@@ -13,14 +13,14 @@ import java.math.BigDecimal;
 public class SanPham_BanHang {
 
     private String ma, ten;
-    private double donGia, giamGia;
+    private String donGia, giamGia;
     private String hinhDangMat, chatLieuMat, kichThuoc, mauVo, theLoai, gioiTinh, kieuMay;
     private int soLuong;
 
     public SanPham_BanHang() {
     }
 
-    public SanPham_BanHang(String ma, String ten, double donGia, double giamGia, String hinhDangMat, String chatLieuMat, String kichThuoc, String mauVo, String theLoai, String gioiTinh, String kieuMay, int soLuong) {
+    public SanPham_BanHang(String ma, String ten, String donGia, String giamGia, String hinhDangMat, String chatLieuMat, String kichThuoc, String mauVo, String theLoai, String gioiTinh, String kieuMay, int soLuong) {
         this.ma = ma;
         this.ten = ten;
         this.donGia = donGia;
@@ -51,19 +51,19 @@ public class SanPham_BanHang {
         this.ten = ten;
     }
 
-    public double getDonGia() {
+    public String getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(double donGia) {
+    public void setDonGia(String donGia) {
         this.donGia = donGia;
     }
 
-    public double getGiamGia() {
+    public String getGiamGia() {
         return giamGia;
     }
 
-    public void setGiamGia(double giamGia) {
+    public void setGiamGia(String giamGia) {
         this.giamGia = giamGia;
     }
 

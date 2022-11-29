@@ -9,19 +9,18 @@ package DomainModels;
  * @author levan
  */
 public class HoaDonCho {
-    private String maHd, ngayTao, maNv,maKh, tenKh;
+    private String maHd, ngayTao, maNv, tenKh;
 
     public HoaDonCho() {
     }
 
-    public HoaDonCho(String maHd, String ngayTao, String maNv, String maKh, String tenKh) {
+    public HoaDonCho(String maHd, String ngayTao, String maNv, String tenKh) {
         this.maHd = maHd;
         this.ngayTao = ngayTao;
         this.maNv = maNv;
-        this.maKh = maKh;
         this.tenKh = tenKh;
     }
-
+    
     public String getMaHd() {
         return maHd;
     }
@@ -46,14 +45,6 @@ public class HoaDonCho {
         this.maNv = maNv;
     }
 
-    public String getMaKh() {
-        return maKh;
-    }
-
-    public void setMaKh(String maKh) {
-        this.maKh = maKh;
-    }
-
     public String getTenKh() {
         return tenKh;
     }
@@ -61,7 +52,5 @@ public class HoaDonCho {
     public void setTenKh(String tenKh) {
         this.tenKh = tenKh;
     }
-
-   
     
 }

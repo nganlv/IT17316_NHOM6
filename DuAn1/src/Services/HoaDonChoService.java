@@ -23,7 +23,7 @@ public class HoaDonChoService implements IHoaDonChoService{
         try {
             List<QlHoaDonCho> listQlHd=new ArrayList<>();
             for(HoaDonCho hdc: iHoaDonChoRepo.getHd()){
-                listQlHd.add(new QlHoaDonCho(hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(),hdc.getMaKh(), hdc.getTenKh()));
+                listQlHd.add(new QlHoaDonCho(hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(), hdc.getTenKh()));
             }
             return listQlHd;
         } catch (Exception e) {
@@ -31,12 +31,11 @@ public class HoaDonChoService implements IHoaDonChoService{
         }
         return null;
     }
-    @Override
     public List<QlHoaDonCho> getHd2s(String ma){
         try {
             List<QlHoaDonCho> listQlHd=new ArrayList<>();
             for(HoaDonCho hdc: iHoaDonChoRepo.getHd2(ma)){
-                listQlHd.add(new QlHoaDonCho(hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(),hdc.getMaKh(), hdc.getTenKh()));
+                listQlHd.add(new QlHoaDonCho(hdc.getMaHd(), hdc.getNgayTao(), hdc.getMaNv(), hdc.getTenKh()));
             }
             return listQlHd;
         } catch (Exception e) {

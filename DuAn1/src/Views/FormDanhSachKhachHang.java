@@ -9,7 +9,6 @@ import Services.KhachHang_BanHangService;
 import ViewModels.QlKhachHang_BanHang;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,7 +42,6 @@ private void loadTableKh() {
                 kh.getEmail(), kh.getNgayTao(), kh.getNgayHh(), kh.getDiem()});
         }
         tblKh.setModel(model);
-        
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -118,11 +116,6 @@ private void loadTableKh() {
         });
 
         btnChon.setText("Chọn");
-        btnChon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChonActionPerformed(evt);
-            }
-        });
 
         btnAllKh.setText("Tất cả khách hàng");
         btnAllKh.addActionListener(new java.awt.event.ActionListener() {
@@ -291,13 +284,12 @@ private void loadTableKh() {
                         .addComponent(jLabel7)
                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(rdoGioiTinh)
-                        .addComponent(jRadioButton2)
-                        .addComponent(datePicker3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(rdoGioiTinh)
+                    .addComponent(jRadioButton2)
+                    .addComponent(jLabel8)
+                    .addComponent(datePicker3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
@@ -433,10 +425,6 @@ private void loadTableKh() {
     private void btnAllKhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllKhActionPerformed
         loadTableKh();
     }//GEN-LAST:event_btnAllKhActionPerformed
-
-    private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
-       
-    }//GEN-LAST:event_btnChonActionPerformed
 private void fillKh(int index) {
         List<QlKhachHang_BanHang> listQlKh = iKhachHang_BanHangService.getAllKhs();
         txtMa.setText(listQlKh.get(index).getMa());
