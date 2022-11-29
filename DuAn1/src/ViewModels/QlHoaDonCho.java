@@ -9,18 +9,19 @@ package ViewModels;
  * @author levan
  */
 public class QlHoaDonCho {
-    private String maHd, ngayTao, maNv, tenKh;
+    private String maHd, ngayTao, maNv,maKh, tenKh;
 
     public QlHoaDonCho() {
     }
 
-    public QlHoaDonCho(String maHd, String ngayTao, String maNv, String tenKh) {
+    public QlHoaDonCho(String maHd, String ngayTao, String maNv, String maKh, String tenKh) {
         this.maHd = maHd;
         this.ngayTao = ngayTao;
         this.maNv = maNv;
+        this.maKh = maKh;
         this.tenKh = tenKh;
     }
-    
+
     public String getMaHd() {
         return maHd;
     }
@@ -45,6 +46,14 @@ public class QlHoaDonCho {
         this.maNv = maNv;
     }
 
+    public String getMaKh() {
+        return maKh;
+    }
+
+    public void setMaKh(String maKh) {
+        this.maKh = maKh;
+    }
+
     public String getTenKh() {
         return tenKh;
     }
@@ -52,4 +61,5 @@ public class QlHoaDonCho {
     public void setTenKh(String tenKh) {
         this.tenKh = tenKh;
     }
+
 }

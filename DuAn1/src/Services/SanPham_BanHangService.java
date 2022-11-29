@@ -20,6 +20,7 @@ public class SanPham_BanHangService implements ISanPham_BanHangService {
 
     private final ISanPham_BanHangRepo iSanPham_BanHangRepo = new SanPham_BanHangRepo();
 
+    @Override
     public List<QLSanPham_BanHang> getAllSps() {
         try {
             List<QLSanPham_BanHang> listSp = new ArrayList<>();
@@ -36,6 +37,7 @@ public class SanPham_BanHangService implements ISanPham_BanHangService {
         return null;
     }
 
+    @Override
     public List<QLSanPham_BanHang> timSpTheoMas(String ma) {
         try {
             List<QLSanPham_BanHang> listSp = new ArrayList<>();
@@ -52,8 +54,4 @@ public class SanPham_BanHangService implements ISanPham_BanHangService {
         return null;
     }
 
-    @Override
-    public List<QLSanPham_BanHang> timSpTheoMas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }
